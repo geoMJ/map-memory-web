@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import MemoryForm from "./MemoryForm";
+import MemoryForm from "@/features/map/components/MemoryForm";
 
-export default function InteractiveMap() {
+const MapPage = () => {
 
     return (
         <div className="h-screen w-screen relative overflow-hidden">
@@ -22,3 +22,5 @@ export default function InteractiveMap() {
         </div>
     );
 }
+
+export default MapPage;

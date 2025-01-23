@@ -1,12 +1,12 @@
 import App from "@/App";
-import InteractiveMap from "@/features/map/components/InteractiveMap";
 import { Routes, Route } from "react-router";
+import MapPage from "./pages/MapPage";
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route index element={<App />} />
-            <Route index element={<InteractiveMap />} />
+            <Route path="/map" element={<MapPage />} />
         </Routes>
     );
 };
