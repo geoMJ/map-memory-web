@@ -54,6 +54,24 @@ const fr = {
             },
         ],
     },
+    map_page: {
+        form: {
+            main_title: "Ajoutez un souvenir",
+            fields: {
+                title: "Titre",
+                title_placeholder: "Choisissez un titre",
+                description: "Description",
+                description_placeholder: "Décrivez la photo",
+                picture: "Photo",
+                year: "Année",
+                select_year: "Séléctionnez une année",
+                month: "Mois (facultatif)",
+                select_month: "Sélectionnez un mois",
+                all_months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+            },
+            submit: "Envoyer !"
+        }
+    }
 };
 
 export default fr;
