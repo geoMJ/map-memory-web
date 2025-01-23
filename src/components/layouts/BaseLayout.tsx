@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import Navbar from "./Navbar";
+import Header from "./Header";
 import Footer from "./Footer";
 
 // Simple layout for pages except the map one
@@ -7,7 +7,7 @@ import Footer from "./Footer";
 const BaseLayout = ({ children }: PropsWithChildren) => {
     return (
         <div className="flex flex-col min-h-screen">
-            <Navbar />
+            <Header />
             <main className="flex-1">{children}</main>
             <Footer />
         </div>
