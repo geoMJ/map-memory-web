@@ -19,6 +19,8 @@ const MemoryForm = () => {
 
     // Form logic //
 
+    // TODO validation and errors
+
     const {
         register,
         handleSubmit,

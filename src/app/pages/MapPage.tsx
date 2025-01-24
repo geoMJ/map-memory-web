@@ -10,6 +10,9 @@ const MapPage = () => {
         <div className="h-screen w-screen relative overflow-hidden">
             {/* Full-screen div for the map */}
             <div id="map"></div>
+            <form>
+                <input type="search" name="place-search" id="place-search" />
+            </form>
 
             {/* Side menu */}
             <Sheet>
