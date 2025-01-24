@@ -17,8 +17,9 @@ const useGeocoder = () => {
                 return { lon: placeData.lon, lat: placeData.lat };
             }
         } catch (error) {
-            throw error;
+            throw "A problem occurred while trying to get coordinates from Nominatim.";
         }
+        return null;
     };
 
     return { coordsFromPlaceName };
