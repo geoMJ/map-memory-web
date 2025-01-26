@@ -65,10 +65,20 @@ const fr = {
                 description_placeholder: "Décrivez la photo",
                 picture: "Photo",
                 year: "Année",
-                select_year: "Séléctionnez une année",
+                select_year: "Sélectionnez une année",
                 month: "Mois (facultatif)",
                 select_month: "Sélectionnez un mois",
-                all_months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+                all_months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+                name: "Votre nom (optionnel)",
+                name_placeholder: "Anonyme",
+                validation: {
+                    title_min: "Le titre doit contenir au moins 3 caractères.",
+                    title_max: "Le titre ne peut contenir plus de 50 caractères.",
+                    description_min: "La description doit contenir au moins 10 caractères.",
+                    description_max: "La description ne peut contenir plus de 255 caractères.",
+                    photo: "Une photo est requise !", // Really ??
+                    year: "Merci de renseigner une année."
+                }
             },
             submit: "Envoyer !"
         }

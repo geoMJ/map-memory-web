@@ -5,36 +5,31 @@ import { Label } from "@/components/ui/label";
 import { MonthSelect, YearSelect } from "@/components/common/MonthYearSelect";
 import { useTranslation } from "react-i18next";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-
-interface MemoryFormFields {
-    title: string;
-    description: string;
-    photo: FileList;
-    year: string;
-    month?: string | undefined;
-}
+import { zodResolver } from "@hookform/resolvers/zod";
+import { memoryFormInputs, memoryFormSchema } from "./memoryForm.schema";
 
 const MemoryForm = () => {
     const { t } = useTranslation();
 
     // Form logic //
 
-    // TODO validation and errors
-
     const {
         register,
         handleSubmit,
         control,
         formState: { errors },
-    } = useForm<MemoryFormFields>();
+    } = useForm<memoryFormInputs>({
+        resolver: zodResolver(memoryFormSchema),
+    });
 
-    const handleMemorySubmit: SubmitHandler<MemoryFormFields> = (data) => {
+    const handleMemorySubmit: SubmitHandler<memoryFormInputs> = (data) => {
         console.log(data);
     };
     //////////////////////////
 
     return (
-        <form className="space-y-4" onSubmit={handleSubmit(handleMemorySubmit)}>
+        <form className="space-y-4 [&_label]:mb-3" onSubmit={handleSubmit(handleMemorySubmit)}>
+            {/* Title */}
             <div>
                 <Label htmlFor="title">{t("map_page.form.fields.title")}</Label>
                 <Input
@@ -42,7 +37,12 @@ const MemoryForm = () => {
                     placeholder={t("map_page.form.fields.title_placeholder")}
                     {...register("title")}
                 />
+                {errors.title && (
+                    <p className="text-red-700">{t(errors.title.message!)}</p>
+                )}
             </div>
+
+            {/* Description */}
             <div>
                 <Label htmlFor="description">
                     {t("map_page.form.fields.description")}
@@ -54,7 +54,14 @@ const MemoryForm = () => {
                     )}
                     {...register("description")}
                 />
+                {errors.description && (
+                    <p className="text-red-700">
+                        {t(errors.description.message!)}
+                    </p>
+                )}
             </div>
+
+            {/* Picture */}
             <div>
                 <Label htmlFor="picture">
                     {t("map_page.form.fields.picture")}
@@ -65,9 +72,14 @@ const MemoryForm = () => {
                     accept="image/*"
                     {...register("photo")}
                 />
+                {errors.photo && (
+                    <p className="text-red-700">{t(errors.photo.message!)}</p>
+                )}
             </div>
+
+            {/* Date */}
             <div className="flex space-x-2">
-                <div className="w-1/2">
+                <div className="w-1/2 whitespace-nowrap">
                     <Label htmlFor="year">
                         {t("map_page.form.fields.year")}
                     </Label>
@@ -81,6 +93,11 @@ const MemoryForm = () => {
                             />
                         )}
                     />
+                    {errors.year && (
+                        <p className="text-red-700">
+                            {t(errors.year.message!)}
+                        </p>
+                    )}
                 </div>
                 <div className="w-1/2">
                     <Label htmlFor="month">
@@ -98,6 +115,21 @@ const MemoryForm = () => {
                     />
                 </div>
             </div>
+
+            {/* Name */}
+            <div>
+                <Label htmlFor="name">{t("map_page.form.fields.name")}</Label>
+                <Input
+                    id="title"
+                    placeholder={t("map_page.form.fields.name_placeholder")}
+                    {...register("name")}
+                />
+                {errors.name && (
+                    <p className="text-red-700">{t(errors.name.message!)}</p>
+                )}
+            </div>
+
+            {/* Submit */}
             <Button type="submit" className="w-full">
                 {t("map_page.form.submit")}
             </Button>

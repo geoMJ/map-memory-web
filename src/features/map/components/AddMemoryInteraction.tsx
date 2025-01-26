@@ -8,7 +8,11 @@ import {
 import { useEffect, useState } from "react";
 import { Entity, PointGraphics, useCesium } from "resium";
 
-const AddMemoryInteraction = () => {
+interface AddMemoryInteractionProps {
+    onPointAdded: () => void;
+}
+
+const AddMemoryInteraction = ({ onPointAdded }: AddMemoryInteractionProps) => {
     const { viewer } = useCesium();
 
     const [userPoint, setUserPoint] = useState<Cartesian3 | null>(null);
@@ -20,6 +24,9 @@ const AddMemoryInteraction = () => {
         const cartesian = viewer?.camera.pickEllipsoid(pos, ellipsoid);
         if (cartesian) {
             setUserPoint(cartesian);
+
+            // This will open the form in our case
+            onPointAdded();
         }
     };
 
@@ -31,7 +38,19 @@ const AddMemoryInteraction = () => {
                 ScreenSpaceEventType.LEFT_CLICK
             );
         }
-    }, []);
+
+        // CLeanup callback
+        // TODO study this feature in more depth
+        // From what I understood after reading the docs, it removes unnecessary stuff when the component unmounts
+        // Here, we added an interaction so we can remove it when not needed
+        return () => {
+            if (viewer) {
+                viewer.screenSpaceEventHandler.removeInputAction(
+                    ScreenSpaceEventType.LEFT_CLICK
+                );
+            }
+        };
+    }, [viewer]);
 
     // If the user clicked somewhere, the point appears
     return userPoint ? (

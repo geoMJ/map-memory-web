@@ -1,18 +1,15 @@
-import { Viewer, Scene, CustomDataSource } from "resium";
+import { Viewer, Scene } from "resium";
 import { ImageryLayer, OpenStreetMapImageryProvider, Color } from "cesium";
 import AddMemoryInteraction from "./AddMemoryInteraction";
-import { useState } from "react";
 
 const OSMLayer = new ImageryLayer(new OpenStreetMapImageryProvider({}));
 
 interface Interactive3DMapProps {
     userAddingPoint: boolean;
-    onUserAddedPoint: React.Dispatch<React.SetStateAction<boolean>>;
+    onUserAddedPoint: () => void;
 }
 
 const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMapProps) => {
-
-    //const toggleMemoryForm = () => onUserAddedPoint((prev: boolean) => !prev);
 
     return (
         // Viewer without all the widgets
@@ -33,7 +30,7 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
             <Scene backgroundColor={new Color(0.4, 0.5, 0.8)} />
 
             {/* Entities */}
-            {userAddingPoint ? <AddMemoryInteraction /> : null }
+            {userAddingPoint ? <AddMemoryInteraction onPointAdded={onUserAddedPoint} /> : null }
 
         </Viewer>
     );

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import Interactive3DMap from "@/features/map/components/InteractiveMap";
-import MemoryForm from "@/features/map/components/MemoryForm";
+import MemoryForm from "@/features/map/components/memoryForm/MemoryForm";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -12,13 +12,16 @@ const MapPage = () => {
     const [formOpened, setFormOpened] = useState(false);
 
     const toggleInteration = () => setUserAddingPoint((prev: boolean) => !prev);
+    const handlePointAdded = () => {
+        setFormOpened(true);
+    };
 
     return (
         <div className="h-screen w-screen relative overflow-hidden">
             {/* The interesting part : Cesium map */}
             <Interactive3DMap
                 userAddingPoint={userAddingPoint}
-                onUserAddedPoint={setFormOpened}
+                onUserAddedPoint={handlePointAdded}
             />
 
             <Button
