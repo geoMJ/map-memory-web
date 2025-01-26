@@ -55,6 +55,7 @@ const fr = {
         ],
     },
     map_page: {
+        add_memory_trigger: "Placer une épingle",
         form: {
             main_title: "Ajoutez un souvenir",
             fields: {
