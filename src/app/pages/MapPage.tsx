@@ -24,13 +24,14 @@ const MapPage = () => {
                 onUserAddedPoint={handlePointAdded}
             />
 
+            {/* Button for toggling user interaction */}
             <Button
                 onClick={toggleInteration}
                 className={`absolute top-4 left-4 z-10 ${
                     userAddingPoint ? "bg-orange-600" : ""
                 }`}
             >
-                {t("map_page.add_memory_trigger")}
+                {t(userAddingPoint ? "map_page.add_memory_trigger_stop" : "map_page.add_memory_trigger")}
             </Button>
 
             {/* Side menu with form to submit a memory */}

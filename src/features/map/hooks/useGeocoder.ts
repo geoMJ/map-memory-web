@@ -1,6 +1,9 @@
 import axios from "axios";
+import { useState } from "react";
 
 const useGeocoder = () => {
+    const [error, setError] = useState<string | null>(null);
+
     const coordsFromPlaceName = async (place: string) => {
         try {
             const response = await axios({
@@ -14,15 +17,20 @@ const useGeocoder = () => {
             });
             if (response.data) {
                 const placeData = response.data[0];
-                return { lon: placeData.lon, lat: placeData.lat };
+                const lon = parseFloat(placeData.lon);
+                const lat = parseFloat(placeData.lat);
+
+                return { lon, lat };
             }
         } catch (error) {
-            throw "A problem occurred while trying to get coordinates from Nominatim.";
+            setError(
+                "A problem occurred while trying to get coordinates from Nominatim."
+            );
         }
         return null;
     };
 
-    return { coordsFromPlaceName };
+    return { coordsFromPlaceName, error };
 };
 
 export default useGeocoder;
