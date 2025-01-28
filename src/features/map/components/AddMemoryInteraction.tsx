@@ -7,9 +7,10 @@ import {
 } from "cesium";
 import { useEffect, useState } from "react";
 import { Entity, PointGraphics, useCesium } from "resium";
+import { cartesian3ToWKT } from "../utils/wktConvert";
 
 interface AddMemoryInteractionProps {
-    onPointAdded: () => void;
+    onPointAdded: (wktPoint:string) => void;
 }
 
 const AddMemoryInteraction = ({ onPointAdded }: AddMemoryInteractionProps) => {
@@ -21,12 +22,12 @@ const AddMemoryInteraction = ({ onPointAdded }: AddMemoryInteractionProps) => {
     const handleAdd = (e: CesiumEventHandler.PositionedEvent) => {
         const pos = e.position as Cartesian2;
         const ellipsoid = viewer?.scene.globe.ellipsoid;
-        const cartesian = viewer?.camera.pickEllipsoid(pos, ellipsoid);
-        if (cartesian) {
-            setUserPoint(cartesian);
-
+        const cartesian3 = viewer?.camera.pickEllipsoid(pos, ellipsoid);
+        if (cartesian3) {
+            setUserPoint(cartesian3);
+            const wkt = cartesian3ToWKT(cartesian3);
             // This will open the form in our case
-            onPointAdded();
+            onPointAdded(wkt);
         }
     };
 

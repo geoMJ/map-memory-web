@@ -5,7 +5,7 @@ import { NavHashLink } from "react-router-hash-link";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 
-const Navbar = ({desktop}:{desktop?:boolean}) => {
+const Navbar = ({ desktop }: { desktop?: boolean }) => {
     const { t } = useTranslation();
     const linkStyles = "text-sm font-medium hover:underline underline-offset";
     return (
@@ -53,14 +53,17 @@ const Header = () => {
                     MapMemory
                 </span>
             </NavHashLink>
-            <div className="lg:hidden">
+            <div className="md:hidden">
                 <Sheet>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon" aria-label="menu">
                             <MenuIcon />
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="top" className="text-center pt-12 rounded-b">
+                    <SheetContent
+                        side="top"
+                        className="text-center pt-12 rounded-b"
+                    >
                         <Navbar />
                     </SheetContent>
                 </Sheet>

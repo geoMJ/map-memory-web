@@ -7,9 +7,15 @@ import { useTranslation } from "react-i18next";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { memoryFormInputs, memoryFormSchema } from "./memoryForm.schema";
+import { apiClient } from "@/lib/apiClient";
 
-const MemoryForm = () => {
+interface MemoryFormProps {
+    point: string;
+}
+
+const MemoryForm = ({point}:MemoryFormProps) => {
     const { t } = useTranslation();
+
 
     // Form logic //
 
@@ -23,8 +29,14 @@ const MemoryForm = () => {
     });
 
     const handleMemorySubmit: SubmitHandler<memoryFormInputs> = (data) => {
-        console.log(data);
+        const memoryData = {...data, geom: point, photo:data.photo[0]};
+        apiClient.post("memories/", memoryData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })
     };
+    
     //////////////////////////
 
     return (

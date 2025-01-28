@@ -57,8 +57,10 @@ const fr = {
     map_page: {
         add_memory_trigger: "Ajouter",
         add_memory_trigger_stop: "Annuler",
+        back_home: "Retour à l'accueil",
         form: {
             main_title: "Ajoutez un souvenir",
+            main_description: "Remplissez ce formulaire afin de partager votre photo.",
             fields: {
                 title: "Titre",
                 title_placeholder: "Choisissez un titre",

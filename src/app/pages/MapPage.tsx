@@ -1,19 +1,29 @@
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+} from "@/components/ui/sheet";
 import Interactive3DMap from "@/features/map/components/InteractiveMap";
 import MemoryForm from "@/features/map/components/memoryForm/MemoryForm";
+import { Home } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router";
 
 const MapPage = () => {
     const { t } = useTranslation();
 
     const [userAddingPoint, setUserAddingPoint] = useState(false);
     const [formOpened, setFormOpened] = useState(false);
+    const [addedPoint, setAddedPoint] = useState<string | null>(null);
 
     const toggleInteration = () => setUserAddingPoint((prev: boolean) => !prev);
-    const handlePointAdded = () => {
+    const handlePointAdded = (wktPoint: string) => {
         setFormOpened(true);
+        setAddedPoint(wktPoint);
     };
 
     return (
@@ -31,18 +41,37 @@ const MapPage = () => {
                     userAddingPoint ? "bg-orange-600" : ""
                 }`}
             >
-                {t(userAddingPoint ? "map_page.add_memory_trigger_stop" : "map_page.add_memory_trigger")}
+                {t(
+                    userAddingPoint
+                        ? "map_page.add_memory_trigger_stop"
+                        : "map_page.add_memory_trigger"
+                )}
             </Button>
 
             {/* Side menu with form to submit a memory */}
             <Sheet open={formOpened} onOpenChange={setFormOpened}>
                 <SheetContent>
-                    <SheetTitle className="text-l lg:text-2xl font-bold mb-6">
-                        {t("map_page.form.main_title")}
-                    </SheetTitle>
-                    <MemoryForm />
+                    <SheetHeader>
+                        <SheetTitle className="text-l lg:text-2xl font-bold mb-6">
+                            {t("map_page.form.main_title")}
+                        </SheetTitle>
+                        <SheetDescription>
+                            {t("map_page.form.main_description")}
+                        </SheetDescription>
+                    </SheetHeader>
+                    {addedPoint && <MemoryForm point={addedPoint} />}
                 </SheetContent>
             </Sheet>
+
+            {/* Back to home page */}
+            <div className="absolute flex gap-2 items-center right-4 bottom-4 text-xl text-neutral-500 hover:text-neutral-200 transition-colors">
+                <Home />
+                <NavLink
+                    to="/"
+                >
+                    {t("map_page.back_home")}
+                </NavLink>
+            </div>
         </div>
     );
 };

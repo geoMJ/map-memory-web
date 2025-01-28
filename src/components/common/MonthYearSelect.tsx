@@ -54,7 +54,7 @@ const MonthSelect = ({ ...props }: React.ComponentProps<typeof Select>) => {
             </SelectTrigger>
             <SelectContent>
                 {months.map((month, index) => (
-                    <SelectItem key={index} value={month}>
+                    <SelectItem key={index} value={(index+1).toString()}>
                         {month}
                     </SelectItem>
                 ))}

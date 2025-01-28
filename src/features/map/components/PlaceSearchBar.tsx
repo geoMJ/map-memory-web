@@ -16,7 +16,7 @@ const PlaceSearchBar = () => {
 
         // TODO display something in case of error and maybe trycatch instead of if blocks
         if (error) {
-            return
+            return;
         }
 
         if (coords && viewer) {
@@ -27,7 +27,7 @@ const PlaceSearchBar = () => {
 
     return (
         <form onSubmit={handleSearchPlace}>
-            <div className="flex w-[20dvw] max-w-sm space-x-2">
+            <div className="flex w-[min(50rem,_50dvw)] max-w-sm space-x-2">
                 <Input type="search" name="place" id="place" />
                 <Button type="submit">
                     <Search />

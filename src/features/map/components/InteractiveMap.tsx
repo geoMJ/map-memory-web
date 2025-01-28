@@ -7,7 +7,7 @@ const OSMLayer = new ImageryLayer(new OpenStreetMapImageryProvider({}));
 
 interface Interactive3DMapProps {
     userAddingPoint: boolean;
-    onUserAddedPoint: () => void;
+    onUserAddedPoint: (wktPoint:string) => void;
 }
 
 const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMapProps) => {
@@ -34,6 +34,7 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
             <div className="absolute top-4 right-4 z-10">
                 <PlaceSearchBar />
             </div>
+
 
             {/* Entities */}
             {userAddingPoint ? <AddMemoryInteraction onPointAdded={onUserAddedPoint} /> : null }
