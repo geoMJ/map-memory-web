@@ -5,7 +5,7 @@ import { MapPin, Search, Upload } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
 import placeholderImg from "@/assets/images/placeholder.svg";
-import FeatureCard from "@/components/common/FeatureCard";
+import FeatureCard from "@/components/shared/FeatureCard";
 
 const HomePage = () => {
     const { t } = useTranslation();
@@ -55,35 +55,23 @@ const HomePage = () => {
             </section>
 
             {/* Features section */}
-            <section
-                id="features"
-                className="w-full py-12 md:py-24 lg:py-32 bg-white"
-            >
+            <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-white">
                 <Container>
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
                         {t("navigation.features")}
                     </h2>
                     <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
                         <FeatureCard
-                            icon={
-                                <MapPin className="h-10 w-10 text-green-600 mb-2" />
-                            }
-                            title={t(
-                                "home.features_section.feature_memories.pin_memories"
-                            )}
-                            description={t(
-                                "home.features_section.feature_memories.pin_memories"
-                            )}
+                            icon={<MapPin className="h-10 w-10 text-green-600 mb-2" />}
+                            title={t("home.features_section.feature_memories.pin_memories")}
+                            description={t("home.features_section.feature_memories.pin_memories")}
                         />
                     </div>
                 </Container>
             </section>
 
             {/* How It Works section */}
-            <section
-                id="how-it-works"
-                className="w-full py-12 md:py-24 lg:py-32 bg-green-50"
-            >
+            <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32 bg-green-50">
                 <Container>
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
                         {t("navigation.how_it_works")}
@@ -93,7 +81,10 @@ const HomePage = () => {
                         {steps.map((step, index) => {
                             const StepIcon = stepIcons[index];
                             return (
-                                <div key={index+1} className="flex flex-col items-center text-center">
+                                <div
+                                    key={index + 1}
+                                    className="flex flex-col items-center text-center"
+                                >
                                     <StepIcon className="h-12 w-12 text-green-600 mb-4" />
                                     <h3 className="text-xl font-bold mb-2">
                                         {`${index + 1}. ${step.step}`}
@@ -107,10 +98,7 @@ const HomePage = () => {
             </section>
 
             {/* FAQ Section */}
-            <section
-                id="faq"
-                className="w-full py-12 md:py-24 lg:py-32 bg-white"
-            >
+            <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-white">
                 <Container>
                     {" "}
                     {/*TODO maybe remove this wrapper*/}

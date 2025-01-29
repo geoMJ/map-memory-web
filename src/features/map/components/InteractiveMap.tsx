@@ -1,12 +1,13 @@
-import { Viewer, GeoJsonDataSource } from "resium";
+import { Viewer, GeoJsonDataSource, EventTarget } from "resium";
 import { ImageryLayer, OpenStreetMapImageryProvider } from "cesium";
 import AddMemoryInteraction from "./AddMemoryInteraction";
 import PlaceSearchBar from "./PlaceSearchBar";
 import { useEffect, useState } from "react";
 import { apiClient } from "@/lib/apiClient";
-//import { getRandomCesiumColor } from "../utils/randomColor";
-import DecadeFilter from "@/components/common/DecadeFilter";
+import DecadeFilter from "@/components/shared/DecadeFilter";
 import { getRandomHexColor } from "../utils/randomColor";
+import MemoryCard, { MemoryCardProps } from "@/components/shared/MemoryCard";
+import { X } from "lucide-react";
 
 const OSMLayer = new ImageryLayer(new OpenStreetMapImageryProvider({}));
 
@@ -40,6 +41,9 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
     const [filteredMemories, setFilteredMemories] = useState<GeoJsonFeatureCollection | null>(null);
     const [chosenTimePeriods, setChosenTimePeriods] = useState<number[]>(decades);
     const [mouseOnMemory, setMouseOnMemory] = useState(false);
+
+    // Memory Card related state
+    const [cardProperties, setCardProperties] = useState<MemoryCardProps | null>(null);
 
     // Just for user experience, cool canvas trick thanks to Cesium's API
     const togglePointer = () => {
@@ -101,6 +105,13 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
         }
     };
 
+    // Finally, the cards !
+    const showMemoryCard = (target: EventTarget) => {
+        const memory = target.id.properties?.getValue() as MemoryCardProps;
+        console.log("showing")
+        setCardProperties(memory);
+    };
+
     return (
         // Viewer without all the widgets
         <Viewer
@@ -123,13 +134,23 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
                 <GeoJsonDataSource
                     data={filteredMemories}
                     markerSize={24}
-                    //markerColor={getRandomCesiumColor()}
                     onMouseEnter={togglePointer}
                     onMouseLeave={togglePointer}
+                    onClick={(_, target) => {
+                        showMemoryCard(target);
+                    }}
                 />
             )}
 
-            <div className="flex gap-2 absolute top-4 right-4 z-10">
+            {/* Showing what the user added */}
+            {cardProperties && (
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 animate-in zoom-in-50 slide-in-from-top-1/2 slide-in-from-left-1/2">
+                    <button className="absolute top-2 right-2 p-2 rounded-full bg-gray-700 text-gray-50 opacity-50 hover:opacity-90 transition-opacity" aria-label="close" onClick={() => setCardProperties(null)}><X size={16} /></button>
+                    <MemoryCard {...cardProperties} />
+                </div>
+            )}
+
+            <div className="flex gap-2 absolute top-4 right-4 z-10 transition-all">
                 {/* ...Which can be filtered */}
                 <DecadeFilter
                     decadesArray={decades}

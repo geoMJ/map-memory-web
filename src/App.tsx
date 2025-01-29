@@ -1,13 +1,12 @@
-import BaseLayout from "./components/layouts/BaseLayout"
-import HomePage from "./app/pages/HomePage"
+import HomePage from "./app/pages/HomePage";
+import BaseLayout from "./components/layouts/BaseLayout";
 
 function App() {
-
-  return (
-    <BaseLayout>
-    <HomePage />
-    </BaseLayout>
-  )
+    return (
+        <BaseLayout>
+            <HomePage />
+        </BaseLayout>
+    );
 }
 
-export default App
+export default App;
