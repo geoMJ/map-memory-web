@@ -1,13 +1,16 @@
 import {
     Cartesian2,
     Cartesian3,
-    Color,
     ScreenSpaceEventHandler as CesiumEventHandler,
     ScreenSpaceEventType,
 } from "cesium";
 import { useEffect, useState } from "react";
 import { Entity, PointGraphics, useCesium } from "resium";
 import { cartesian3ToWKT } from "../utils/wktConvert";
+import { getRandomCesiumColor } from "../utils/randomColor";
+
+// User gets to add colorful points !
+const entityColor = getRandomCesiumColor()
 
 interface AddMemoryInteractionProps {
     onPointAdded: (wktPoint:string) => void;
@@ -56,7 +59,7 @@ const AddMemoryInteraction = ({ onPointAdded }: AddMemoryInteractionProps) => {
     // If the user clicked somewhere, the point appears
     return userPoint ? (
         <Entity position={userPoint}>
-            <PointGraphics pixelSize={20} color={new Color(1, 0, 0)} />
+            <PointGraphics pixelSize={16} color={entityColor} />
         </Entity>
     ) : null;
 };

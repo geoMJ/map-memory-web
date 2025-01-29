@@ -6,7 +6,7 @@ const fr = {
         how_it_works: "Comment ça marche",
         faq: "FAQ",
         faq_verbose: "Questions fréquentes",
-        map: "Carte intéractive"
+        map: "Carte intéractive",
     },
     home: {
         hero_section: {
@@ -26,13 +26,14 @@ const fr = {
         how_it_works_section: [
             {
                 step: "Choisissez un emplacement",
-                description:
-                    "Trouvez n'importe quel endroit du monde sur la carte intéractive.",
-            }, {
+                description: "Trouvez n'importe quel endroit du monde sur la carte intéractive.",
+            },
+            {
                 step: "Chargez une photo",
                 description:
                     "Partagez la photo du lieu que vous avez choisi et renseignez l'année à laquelle elle fut prise.",
-            }, {
+            },
+            {
                 step: "Explorez",
                 description:
                     "Une fois votre contribution ajoutée à la carte, partagez-la avec vos amis, et continuez à découvrir les photos des autres utilisateurs !",
@@ -44,8 +45,7 @@ const fr = {
                 answer: "Non, MapMemory est une plateforme gratuite qui ne nécessite pas d'inscription. Vous pouvez commencer à ajouter vos photos et à explorer la carte interactive dès à présent !",
             },
             {
-                question:
-                    "Puis-je télécharger plusieurs photos pour un même lieu ?",
+                question: "Puis-je télécharger plusieurs photos pour un même lieu ?",
                 answer: "Actuellement, vous pouvez ajouter une seule photo par épingle. Cependant, vous pouvez ajouter plusieurs épingles au même endroit pour différentes années.",
             },
             {
@@ -58,10 +58,16 @@ const fr = {
         add_memory_trigger: "Ajouter",
         add_memory_trigger_stop: "Annuler",
         back_home: "Retour à l'accueil",
-        time_periods: {
-            prefix: "Années",
-            suffix: null
+        decades_filter: {
+            tooltip: "Filtrer par période",
+            dropdown_title: "Sélectionnez des périodes",
+            time_periods: {
+                prefix: "Années ",
+                suffix: null,
+            },
+            all: "Toutes"
         },
+        search_bar_placeholder: "Rechercher un lieu...",
         form: {
             main_title: "Ajoutez un souvenir",
             main_description: "Remplissez ce formulaire afin de partager votre photo.",
@@ -75,7 +81,20 @@ const fr = {
                 select_year: "Sélectionnez une année",
                 month: "Mois (facultatif)",
                 select_month: "Sélectionnez un mois",
-                all_months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+                all_months: [
+                    "Janvier",
+                    "Février",
+                    "Mars",
+                    "Avril",
+                    "Mai",
+                    "Juin",
+                    "Juillet",
+                    "Août",
+                    "Septembre",
+                    "Octobre",
+                    "Novembre",
+                    "Décembre",
+                ],
                 name: "Votre nom (optionnel)",
                 name_placeholder: "Anonyme",
                 validation: {
@@ -84,12 +103,12 @@ const fr = {
                     description_min: "La description doit contenir au moins 10 caractères.",
                     description_max: "La description ne peut contenir plus de 255 caractères.",
                     photo: "Une photo est requise !", // Really ??
-                    year: "Merci de renseigner une année."
-                }
+                    year: "Merci de renseigner une année.",
+                },
             },
-            submit: "Envoyer !"
-        }
-    }
+            submit: "Envoyer !",
+        },
+    },
 };
 
 export default fr;

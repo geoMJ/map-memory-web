@@ -26,6 +26,11 @@ const MapPage = () => {
         setAddedPoint(wktPoint);
     };
 
+    const onFormSubmitted = () => {
+        setUserAddingPoint(false);
+        setFormOpened(false);
+    }
+
     return (
         <div className="h-screen w-screen relative overflow-hidden">
             {/* The interesting part : Cesium map */}
@@ -57,7 +62,7 @@ const MapPage = () => {
                     </SheetHeader>
                     {addedPoint && (
                         <MemoryForm
-                            onSubmitted={() => setUserAddingPoint(false)}
+                            onSubmitted={onFormSubmitted}
                             point={addedPoint}
                         />
                     )}

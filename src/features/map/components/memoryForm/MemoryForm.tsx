@@ -23,6 +23,7 @@ const MemoryForm = ({ point, onSubmitted }: MemoryFormProps) => {
         register,
         handleSubmit,
         control,
+        reset,
         formState: { errors },
     } = useForm<memoryFormInputs>({
         resolver: zodResolver(memoryFormSchema),
@@ -35,6 +36,7 @@ const MemoryForm = ({ point, onSubmitted }: MemoryFormProps) => {
                 "Content-Type": "multipart/form-data",
             },
         });
+        reset();
         onSubmitted();
     };
 

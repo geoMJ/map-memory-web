@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { apiClient } from "@/lib/apiClient";
 //import { getRandomCesiumColor } from "../utils/randomColor";
 import DecadeFilter from "@/components/common/DecadeFilter";
+import { getRandomHexColor } from "../utils/randomColor";
 
 const OSMLayer = new ImageryLayer(new OpenStreetMapImageryProvider({}));
 
@@ -62,8 +63,18 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
         const getMemories = async () => {
             try {
                 const memoriesResponse = await apiClient.get("memories/");
-                setMemories(memoriesResponse.data);
-                setFilteredMemories(memoriesResponse.data);
+                const memoriesObject = memoriesResponse.data as GeoJsonFeatureCollection;
+
+                // Because we love a colorful map
+                // I know I'm mutating the original data but it's done right after fetching and before any state management logic so...
+                // Might change it later though
+                memoriesObject.features.forEach((feature) => {
+                    feature.properties["marker-color"] = getRandomHexColor();
+                });
+
+                // I won't mutate anymore after this
+                setMemories(memoriesObject);
+                setFilteredMemories(memoriesObject);
             } catch (error) {
                 console.log(error);
             }
