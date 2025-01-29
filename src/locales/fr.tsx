@@ -58,6 +58,10 @@ const fr = {
         add_memory_trigger: "Ajouter",
         add_memory_trigger_stop: "Annuler",
         back_home: "Retour à l'accueil",
+        time_periods: {
+            prefix: "Années",
+            suffix: null
+        },
         form: {
             main_title: "Ajoutez un souvenir",
             main_description: "Remplissez ce formulaire afin de partager votre photo.",

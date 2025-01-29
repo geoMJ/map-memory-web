@@ -111,14 +111,14 @@ const HomePage = () => {
                 id="faq"
                 className="w-full py-12 md:py-24 lg:py-32 bg-white"
             >
-                <div>
+                <Container>
                     {" "}
                     {/*TODO maybe remove this wrapper*/}
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
                         {t("navigation.faq_verbose")}
                     </h2>
                     <Faq />
-                </div>
+                </Container>
             </section>
 
             {/* User reviews / comment section */}

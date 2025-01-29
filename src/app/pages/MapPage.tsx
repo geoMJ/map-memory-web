@@ -37,9 +37,7 @@ const MapPage = () => {
             {/* Button for toggling user interaction */}
             <Button
                 onClick={toggleInteration}
-                className={`absolute top-4 left-4 z-10 ${
-                    userAddingPoint ? "bg-orange-600" : ""
-                }`}
+                className={`absolute top-4 left-4 z-10 ${userAddingPoint ? "bg-orange-600" : ""}`}
             >
                 {t(
                     userAddingPoint
@@ -55,22 +53,21 @@ const MapPage = () => {
                         <SheetTitle className="text-l lg:text-2xl font-bold mb-6">
                             {t("map_page.form.main_title")}
                         </SheetTitle>
-                        <SheetDescription>
-                            {t("map_page.form.main_description")}
-                        </SheetDescription>
+                        <SheetDescription>{t("map_page.form.main_description")}</SheetDescription>
                     </SheetHeader>
-                    {addedPoint && <MemoryForm point={addedPoint} />}
+                    {addedPoint && (
+                        <MemoryForm
+                            onSubmitted={() => setUserAddingPoint(false)}
+                            point={addedPoint}
+                        />
+                    )}
                 </SheetContent>
             </Sheet>
 
             {/* Back to home page */}
-            <div className="absolute flex gap-2 items-center right-4 bottom-4 text-xl text-neutral-500 hover:text-neutral-200 transition-colors">
+            <div className="absolute flex gap-2 items-center right-4 bottom-4 text-xl text-gray-500 hover:text-gray-200 transition-colors">
                 <Home />
-                <NavLink
-                    to="/"
-                >
-                    {t("map_page.back_home")}
-                </NavLink>
+                <NavLink to="/">{t("map_page.back_home")}</NavLink>
             </div>
         </div>
     );

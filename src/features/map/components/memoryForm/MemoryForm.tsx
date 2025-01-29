@@ -11,11 +11,11 @@ import { apiClient } from "@/lib/apiClient";
 
 interface MemoryFormProps {
     point: string;
+    onSubmitted: () => void;
 }
 
-const MemoryForm = ({point}:MemoryFormProps) => {
+const MemoryForm = ({ point, onSubmitted }: MemoryFormProps) => {
     const { t } = useTranslation();
-
 
     // Form logic //
 
@@ -29,14 +29,15 @@ const MemoryForm = ({point}:MemoryFormProps) => {
     });
 
     const handleMemorySubmit: SubmitHandler<memoryFormInputs> = (data) => {
-        const memoryData = {...data, geom: point, photo:data.photo[0]};
+        const memoryData = { ...data, geom: point, photo: data.photo[0] };
         apiClient.post("memories/", memoryData, {
             headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        })
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        onSubmitted();
     };
-    
+
     //////////////////////////
 
     return (
@@ -49,80 +50,49 @@ const MemoryForm = ({point}:MemoryFormProps) => {
                     placeholder={t("map_page.form.fields.title_placeholder")}
                     {...register("title")}
                 />
-                {errors.title && (
-                    <p className="text-red-700">{t(errors.title.message!)}</p>
-                )}
+                {errors.title && <p className="text-red-700">{t(errors.title.message!)}</p>}
             </div>
 
             {/* Description */}
             <div>
-                <Label htmlFor="description">
-                    {t("map_page.form.fields.description")}
-                </Label>
+                <Label htmlFor="description">{t("map_page.form.fields.description")}</Label>
                 <Textarea
                     id="description"
-                    placeholder={t(
-                        "map_page.form.fields.description_placeholder"
-                    )}
+                    placeholder={t("map_page.form.fields.description_placeholder")}
                     {...register("description")}
                 />
                 {errors.description && (
-                    <p className="text-red-700">
-                        {t(errors.description.message!)}
-                    </p>
+                    <p className="text-red-700">{t(errors.description.message!)}</p>
                 )}
             </div>
 
             {/* Picture */}
             <div>
-                <Label htmlFor="picture">
-                    {t("map_page.form.fields.picture")}
-                </Label>
-                <Input
-                    id="picture"
-                    type="file"
-                    accept="image/*"
-                    {...register("photo")}
-                />
-                {errors.photo && (
-                    <p className="text-red-700">{t(errors.photo.message!)}</p>
-                )}
+                <Label htmlFor="picture">{t("map_page.form.fields.picture")}</Label>
+                <Input id="picture" type="file" accept="image/*" {...register("photo")} />
+                {errors.photo && <p className="text-red-700">{t(errors.photo.message!)}</p>}
             </div>
 
             {/* Date */}
             <div className="flex space-x-2">
                 <div className="w-1/2 whitespace-nowrap">
-                    <Label htmlFor="year">
-                        {t("map_page.form.fields.year")}
-                    </Label>
+                    <Label htmlFor="year">{t("map_page.form.fields.year")}</Label>
                     <Controller
                         name="year"
                         control={control}
                         render={({ field }) => (
-                            <YearSelect
-                                onValueChange={field.onChange}
-                                value={field.value}
-                            />
+                            <YearSelect onValueChange={field.onChange} value={field.value} />
                         )}
                     />
-                    {errors.year && (
-                        <p className="text-red-700">
-                            {t(errors.year.message!)}
-                        </p>
-                    )}
+                    {errors.year && <p className="text-red-700">{t(errors.year.message!)}</p>}
                 </div>
                 <div className="w-1/2">
-                    <Label htmlFor="month">
-                        {t("map_page.form.fields.month")}
-                    </Label>
+                    <Label htmlFor="month">{t("map_page.form.fields.month")}</Label>
                     <Controller
                         name="month"
                         control={control}
                         render={({ field }) => (
-                            <MonthSelect
-                                onValueChange={field.onChange}
-                                value={field.value}
-                            />
+                            <MonthSelect onValueChange={field.onChange} value={field.value} />
                         )}
                     />
                 </div>
@@ -136,9 +106,7 @@ const MemoryForm = ({point}:MemoryFormProps) => {
                     placeholder={t("map_page.form.fields.name_placeholder")}
                     {...register("name")}
                 />
-                {errors.name && (
-                    <p className="text-red-700">{t(errors.name.message!)}</p>
-                )}
+                {errors.name && <p className="text-red-700">{t(errors.name.message!)}</p>}
             </div>
 
             {/* Submit */}

@@ -1,7 +1,7 @@
 import { MapPin, MenuIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
-import { NavHashLink } from "react-router-hash-link";
+import { HashLink } from "react-router-hash-link";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 
@@ -12,23 +12,19 @@ const Navbar = ({ desktop }: { desktop?: boolean }) => {
         <nav className={desktop ? "max-md:hidden" : ""}>
             <ul className="flex max-md:flex-col gap-4 sm:gap-6">
                 <li>
-                    <NavHashLink smooth className={linkStyles} to="#features">
+                    <HashLink smooth className={linkStyles} to="#features">
                         {t("navigation.features")}
-                    </NavHashLink>
+                    </HashLink>
                 </li>
                 <li>
-                    <NavHashLink
-                        smooth
-                        className={linkStyles}
-                        to="#how-it-works"
-                    >
+                    <HashLink smooth className={linkStyles} to="#how-it-works">
                         {t("navigation.how_it_works")}
-                    </NavHashLink>
+                    </HashLink>
                 </li>
                 <li>
-                    <NavHashLink smooth className={linkStyles} to="#faq">
+                    <HashLink smooth className={linkStyles} to="#faq">
                         {t("navigation.faq")}
-                    </NavHashLink>
+                    </HashLink>
                 </li>
                 <li>
                     <NavLink className={linkStyles} to="/map">
@@ -43,16 +39,10 @@ const Navbar = ({ desktop }: { desktop?: boolean }) => {
 const Header = () => {
     return (
         <header className="px-4 lg:px-6 h-14 flex justify-between items-center">
-            <NavHashLink
-                smooth
-                className="flex items-center justify-center"
-                to="/"
-            >
+            <HashLink smooth className="flex items-center justify-center" to="/">
                 <MapPin className="h-6 w-6 text-green-600" />
-                <span className="ml-2 text-2xl font-bold text-gray-800">
-                    MapMemory
-                </span>
-            </NavHashLink>
+                <span className="ml-2 text-2xl font-bold text-gray-800">MapMemory</span>
+            </HashLink>
             <div className="md:hidden">
                 <Sheet>
                     <SheetTrigger asChild>
@@ -60,10 +50,7 @@ const Header = () => {
                             <MenuIcon />
                         </Button>
                     </SheetTrigger>
-                    <SheetContent
-                        side="top"
-                        className="text-center pt-12 rounded-b"
-                    >
+                    <SheetContent side="top" className="text-center pt-12 rounded-b">
                         <Navbar />
                     </SheetContent>
                 </Sheet>
