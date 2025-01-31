@@ -1,11 +1,10 @@
-import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/button";
 import { Faq } from "@/features/faq/Faq";
-import { MapPin, Search, Upload } from "lucide-react";
+import { Compass, MapPin, Upload } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
-import placeholderImg from "@/assets/images/placeholder.svg";
 import FeatureCard from "@/components/shared/FeatureCard";
+import TwoColsWithImg from "@/components/shared/TwoColsWithImg";
 
 const HomePage = () => {
     const { t } = useTranslation();
@@ -14,99 +13,101 @@ const HomePage = () => {
         step: string;
         description: string;
     }[];
-    const stepIcons = [MapPin, Upload, Search];
+    const stepIcons = [MapPin, Upload, Compass];
+
+    const features = t("home.features_section", { returnObjects: true }) as {
+        title: string;
+        description: string;
+        imgSrc: string;
+        imgAlt: string;
+        lottie?: boolean;
+    }[];
 
     return (
         <>
             {/* Hero section */}
-            <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-green-50">
-                <Container>
-                    <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
-                        <div className="space-y-4">
-                            <div className="space-y-2">
-                                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                                    {t("home.hero_section.heading")}
-                                </h1>
-                                <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                                    {t("home.hero_section.description")}
-                                </p>
-                            </div>
-                            <div className="flex flex-col gap-2 min-[400px]:flex-row">
+            <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-center text-center">
+                    {/* Main hgroup */}
+                    <div className="space-y-6">
+                        <hgroup className="space-y-6">
+                            <h1 className="mx-auto max-w-[800px] text-balance text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                                {t("home.hero_section.heading")}
+                            </h1>
+                            <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                                {t("home.hero_section.description")}
+                            </p>
+                        </hgroup>
+                        {/* CTA */}
+                        <div className="flex gap-4 justify-center">
+                            <Button asChild>
                                 <NavLink to="/map">
-                                    <Button size="lg">
-                                        {t("home.hero_section.explore_map_CTA")}
-                                    </Button>
+                                    {t("home.hero_section.explore_map_CTA")}
                                 </NavLink>
+                            </Button>
+                            <Button variant="outline" asChild>
                                 <NavLink to="#how-it-works">
-                                    <Button variant="outline" size="lg">
-                                        {t("home.hero_section.learn_more_CTA")}
-                                    </Button>
+                                    {t("home.hero_section.learn_more_CTA")}
                                 </NavLink>
-                            </div>
+                            </Button>
                         </div>
-                        <img
+                    </div>
+                    {/* <img
                             alt="Hero"
                             className="aspect-video mx-auto rounded-xl object-cover object-center lg:order-last"
                             src={placeholderImg}
                             width="600"
-                        />
-                    </div>
-                </Container>
+                        /> */}
+                </div>
             </section>
 
             {/* Features section */}
-            <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-                <Container>
+            <section id="features" className="w-full py-12 md:py-24 lg:py-32 ">
+                <div className="container">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
                         {t("navigation.features")}
                     </h2>
-                    <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
-                        <FeatureCard
-                            icon={<MapPin className="h-10 w-10 text-green-600 mb-2" />}
-                            title={t("home.features_section.feature_memories.pin_memories")}
-                            description={t("home.features_section.feature_memories.pin_memories")}
-                        />
+                    <div className="">
+                        {features.map((feature, index) => <TwoColsWithImg key={index+1} {...feature} inverted={index%2 !== 0} />)}
                     </div>
-                </Container>
+                </div>
             </section>
 
             {/* How It Works section */}
-            <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32 bg-green-50">
-                <Container>
+            <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
+                <div className="container">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
                         {t("navigation.how_it_works")}
                     </h2>
                     {/* TODO MAybe make this a reusable component */}
-                    <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
+                    <div className="flex flex-col lg:flex-row gap-6 pt-8 lg:gap-12 text-center center [&>div]:flex-1">
                         {steps.map((step, index) => {
                             const StepIcon = stepIcons[index];
                             return (
-                                <div
+                                <FeatureCard
                                     key={index + 1}
-                                    className="flex flex-col items-center text-center"
-                                >
-                                    <StepIcon className="h-12 w-12 text-green-600 mb-4" />
-                                    <h3 className="text-xl font-bold mb-2">
-                                        {`${index + 1}. ${step.step}`}
-                                    </h3>
-                                    <p>{step.description}</p>
-                                </div>
+                                    icon={
+                                        <StepIcon className="h-12 w-12 self-center text-primary" />
+                                    }
+                                    title={`${index + 1}. ${step.step}`}
+                                    description={step.description}
+                                />
                             );
                         })}
                     </div>
-                </Container>
+                </div>
             </section>
 
             {/* FAQ Section */}
-            <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-                <Container>
+            <section id="faq" className="w-full py-12 md:py-24 lg:py-32">
+                <div className="container">
                     {" "}
                     {/*TODO maybe remove this wrapper*/}
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
                         {t("navigation.faq_verbose")}
                     </h2>
                     <Faq />
-                </Container>
+                </div>
             </section>
 
             {/* User reviews / comment section */}

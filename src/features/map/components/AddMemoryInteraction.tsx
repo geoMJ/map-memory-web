@@ -10,14 +10,16 @@ import { cartesian3ToWKT } from "../utils/wktConvert";
 import { getRandomCesiumColor } from "../utils/randomColor";
 
 // User gets to add colorful points !
-const entityColor = getRandomCesiumColor()
+const entityColor = getRandomCesiumColor();
 
 interface AddMemoryInteractionProps {
-    onPointAdded: (wktPoint:string) => void;
+    onPointAdded: (wktPoint: string) => void;
 }
 
 const AddMemoryInteraction = ({ onPointAdded }: AddMemoryInteractionProps) => {
     const { viewer } = useCesium();
+
+    viewer!.scene.globe.atmosphereLightIntensity = -5;
 
     const [userPoint, setUserPoint] = useState<Cartesian3 | null>(null);
 
@@ -49,9 +51,7 @@ const AddMemoryInteraction = ({ onPointAdded }: AddMemoryInteractionProps) => {
         // Here, we added an interaction so we can remove it when not needed
         return () => {
             if (viewer) {
-                viewer.screenSpaceEventHandler.removeInputAction(
-                    ScreenSpaceEventType.LEFT_CLICK
-                );
+                viewer.screenSpaceEventHandler.removeInputAction(ScreenSpaceEventType.LEFT_CLICK);
             }
         };
     }, [viewer]);

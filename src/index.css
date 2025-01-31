@@ -6,7 +6,52 @@
 
 @layer base {
   :root {
+    /* Name: custom color palette
+       Author: Ilias Ism
+       URL: https://gradient.page */
 
-    --radius: 0.5rem
+    --gradient: linear-gradient(to top left,#2196f3,#f44336);
+
+    --background: 219 58.5% 4.32%;
+    --foreground: 219 9% 97.7%;
+
+    --muted: 219 45% 16.200000000000003%;
+    --muted-foreground: 219 9% 55.4%;
+
+    --popover: 219 47% 7.0200000000000005%;
+    --popover-foreground: 219 9% 97.7%;
+
+    --card: 219 47% 7.0200000000000005%;
+    --card-foreground: 219 9% 97.7%;
+
+    --border: 219 45% 16.200000000000003%;
+    --input: 219 45% 16.200000000000003%;
+
+    --primary: 219 90% 54%;
+    --primary-foreground: 219 9% 97.7%;
+
+    --secondary: 219 45% 16.200000000000003%;
+    --secondary-foreground: 219 9% 97.7%;
+
+    --accent: 219 45% 16.200000000000003%;
+    --accent-foreground: 219 9% 97.7%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 219 9% 97.7%;
+
+    --ring: 219 90% 54%;
+
+    --radius: 0.5rem;
   }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  };
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  .bg-gradient { background: var(--gradient) }
 }

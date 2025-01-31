@@ -1,5 +1,5 @@
-import { Viewer, GeoJsonDataSource, EventTarget } from "resium";
-import { ImageryLayer, OpenStreetMapImageryProvider } from "cesium";
+import { Viewer, GeoJsonDataSource, EventTarget, Globe, ImageryLayerCollection } from "resium";
+import { ArcGisMapServerImageryProvider, Atmosphere, Ellipsoid, EllipsoidTerrainProvider, ImageryLayer, OpenStreetMapImageryProvider, TerrainProvider, } from "cesium";
 import AddMemoryInteraction from "./AddMemoryInteraction";
 import PlaceSearchBar from "./PlaceSearchBar";
 import { useEffect, useState } from "react";
@@ -8,9 +8,13 @@ import DecadeFilter from "@/components/shared/DecadeFilter";
 import { getRandomHexColor } from "../utils/randomColor";
 import MemoryCard, { MemoryCardProps } from "@/components/shared/MemoryCard";
 import { X } from "lucide-react";
+import { CustomImagery } from "../lib/customImagery";
 
-const OSMLayer = new ImageryLayer(new OpenStreetMapImageryProvider({}));
 
+const mapTiles = new ImageryLayer(CustomImagery);
+const globeAtmosphere = new Atmosphere()
+globeAtmosphere.brightnessShift = -1;
+const globeTerrainProvider = new EllipsoidTerrainProvider()
 // TODO maybe move this kind of stuff to a dedicaced util file
 const currentDecade = Math.floor(new Date().getFullYear() / 10) * 10;
 const decades = Array.from({ length: 11 }, (_, i) => currentDecade - i * 10);
@@ -116,7 +120,7 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
         // Viewer without all the widgets
         <Viewer
             full
-            baseLayer={OSMLayer}
+            baseLayer={mapTiles}
             navigationHelpButton={false}
             timeline={false}
             animation={false}
@@ -129,6 +133,8 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
             fullscreenButton={false}
             className={mouseOnMemory ? "cursor-pointer" : ""}
         >
+
+            <Globe terrainProvider={globeTerrainProvider} atmosphereBrightnessShift={-1} />
             {/* Existing memories... */}
             {memories && (
                 <GeoJsonDataSource

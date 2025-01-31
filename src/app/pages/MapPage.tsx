@@ -42,7 +42,7 @@ const MapPage = () => {
             {/* Button for toggling user interaction */}
             <Button
                 onClick={toggleInteration}
-                className={`absolute top-4 left-4 z-10 ${userAddingPoint ? "bg-orange-600" : ""}`}
+                className={`absolute top-4 left-4 z-10 ${userAddingPoint ? "bg-accent" : ""}`}
             >
                 {t(
                     userAddingPoint

@@ -16,27 +16,43 @@ const fr = {
             explore_map_CTA: "Explorer la carte",
             learn_more_CTA: "En savoir plus",
         },
-        features_section: {
-            feature_memories: {
-                pin_memories: "Épinglez Vos Souvenirs", // TODO maybe change this
-                add_and_share:
-                    "Ajoutez des épingles à la carte et partagez vos photographies du monde.",
+        features_section: [
+            {
+                title: "Le monde en trois dimensions",
+                description: "Un globe interactif avec des épingles aux multiples couleurs pour plus de fun !",
+                imgSrc: "https://lottie.host/c8582010-679b-454e-a98e-6cfb1d7f8a02/wKBogMlUV8.lottie",
+                imgAlt: "animation de globe terrestre avec épingles",
+                lottie: true
             },
-        },
+            {
+                title: "Filtre temporel",
+                description: "Choisissez une époque qui vous intéresse et affichez les photos correspondantes, ou visionnez les toutes les photos en même temps !",
+            },
+            {
+                title: "Dites-nous en plus",
+                description: "Décrivez votre photo et partagez avec les autres des faits qui vous semblent intéressants ou amusants.",
+            },
+            {
+                title: "Votre histoire visible par tous, tout de suite",
+                description: "Pas besoin de payer ou de remplir des formulaires qui n'en finissent pas. Vous pouvez vous amuser directement !",
+            },
+        ],
+
         how_it_works_section: [
             {
                 step: "Choisissez un emplacement",
-                description: "Trouvez n'importe quel endroit du monde sur la carte intéractive.",
+                description:
+                    "Cliquez à l'endroit exact où vous souhaitez voir apparaître votre épingle.",
             },
             {
                 step: "Chargez une photo",
                 description:
-                    "Partagez la photo du lieu que vous avez choisi et renseignez l'année à laquelle elle fut prise.",
+                    "Ajoutez la photo de votre choix, puis ajoutez y un titre et les informations qui vous semblent utiles.",
             },
             {
-                step: "Explorez",
+                step: "Amusez-vous !",
                 description:
-                    "Une fois votre contribution ajoutée à la carte, partagez-la avec vos amis, et continuez à découvrir les photos des autres utilisateurs !",
+                    "Une fois votre contribution ajoutée à la carte, partagez-la avec vos amis, et continuez à explorer !",
             },
         ],
         faq_section: [
@@ -65,7 +81,7 @@ const fr = {
                 prefix: "Années ",
                 suffix: null,
             },
-            all: "Toutes"
+            all: "Toutes",
         },
         search_bar_placeholder: "Rechercher un lieu...",
         form: {
