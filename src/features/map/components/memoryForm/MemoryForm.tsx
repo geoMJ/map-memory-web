@@ -43,79 +43,81 @@ const MemoryForm = ({ point, onSubmitted }: MemoryFormProps) => {
     //////////////////////////
 
     return (
-        <form className="space-y-4 [&_label]:mb-3" onSubmit={handleSubmit(handleMemorySubmit)}>
-            {/* Title */}
-            <div>
-                <Label htmlFor="title">{t("map_page.form.fields.title")}</Label>
-                <Input
-                    id="title"
-                    placeholder={t("map_page.form.fields.title_placeholder")}
-                    {...register("title")}
-                />
-                {errors.title && <p className="text-red-700">{t(errors.title.message!)}</p>}
-            </div>
-
-            {/* Description */}
-            <div>
-                <Label htmlFor="description">{t("map_page.form.fields.description")}</Label>
-                <Textarea
-                    id="description"
-                    placeholder={t("map_page.form.fields.description_placeholder")}
-                    {...register("description")}
-                />
-                {errors.description && (
-                    <p className="text-red-700">{t(errors.description.message!)}</p>
-                )}
-            </div>
-
-            {/* Picture */}
-            <div>
-                <Label htmlFor="picture">{t("map_page.form.fields.picture")}</Label>
-                <Input id="picture" type="file" accept="image/*" {...register("photo")} />
-                {errors.photo && <p className="text-red-700">{t(errors.photo.message!)}</p>}
-            </div>
-
-            {/* Date */}
-            <div className="flex space-x-2">
-                <div className="w-1/2 whitespace-nowrap">
-                    <Label htmlFor="year">{t("map_page.form.fields.year")}</Label>
-                    <Controller
-                        name="year"
-                        control={control}
-                        render={({ field }) => (
-                            <YearSelect onValueChange={field.onChange} value={field.value} />
-                        )}
+        <>
+            <form className="space-y-4 [&_label]:block [&_label]:mb-3" onSubmit={handleSubmit(handleMemorySubmit)}>
+                {/* Title */}
+                <div>
+                    <Label htmlFor="title">{t("map_page.form.fields.title")}</Label>
+                    <Input
+                        id="title"
+                        placeholder={t("map_page.form.fields.title_placeholder")}
+                        {...register("title")}
                     />
-                    {errors.year && <p className="text-red-700">{t(errors.year.message!)}</p>}
+                    {errors.title && <p className="text-red-700">{t(errors.title.message!)}</p>}
                 </div>
-                <div className="w-1/2">
-                    <Label htmlFor="month">{t("map_page.form.fields.month")}</Label>
-                    <Controller
-                        name="month"
-                        control={control}
-                        render={({ field }) => (
-                            <MonthSelect onValueChange={field.onChange} value={field.value} />
-                        )}
+
+                {/* Description */}
+                <div>
+                    <Label htmlFor="description">{t("map_page.form.fields.description")}</Label>
+                    <Textarea
+                        id="description"
+                        placeholder={t("map_page.form.fields.description_placeholder")}
+                        {...register("description")}
                     />
+                    {errors.description && (
+                        <p className="text-red-700">{t(errors.description.message!)}</p>
+                    )}
                 </div>
-            </div>
 
-            {/* Name */}
-            <div>
-                <Label htmlFor="name">{t("map_page.form.fields.name")}</Label>
-                <Input
-                    id="title"
-                    placeholder={t("map_page.form.fields.name_placeholder")}
-                    {...register("name")}
-                />
-                {errors.name && <p className="text-red-700">{t(errors.name.message!)}</p>}
-            </div>
+                {/* Picture */}
+                <div>
+                    <Label htmlFor="picture">{t("map_page.form.fields.picture")}</Label>
+                    <Input id="picture" type="file" accept="image/*" {...register("photo")} />
+                    {errors.photo && <p className="text-red-700">{t(errors.photo.message!)}</p>}
+                </div>
 
-            {/* Submit */}
-            <Button type="submit" className="w-full">
-                {t("map_page.form.submit")}
-            </Button>
-        </form>
+                {/* Date */}
+                <div className="flex space-x-2">
+                    <div className="w-1/2 whitespace-nowrap">
+                        <Label htmlFor="year">{t("map_page.form.fields.year")}</Label>
+                        <Controller
+                            name="year"
+                            control={control}
+                            render={({ field }) => (
+                                <YearSelect onValueChange={field.onChange} value={field.value} />
+                            )}
+                        />
+                        {errors.year && <p className="text-red-700">{t(errors.year.message!)}</p>}
+                    </div>
+                    <div className="w-1/2">
+                        <Label htmlFor="month">{t("map_page.form.fields.month")}</Label>
+                        <Controller
+                            name="month"
+                            control={control}
+                            render={({ field }) => (
+                                <MonthSelect onValueChange={field.onChange} value={field.value} />
+                            )}
+                        />
+                    </div>
+                </div>
+
+                {/* Name */}
+                <div>
+                    <Label htmlFor="name">{t("map_page.form.fields.name")}</Label>
+                    <Input
+                        id="title"
+                        placeholder={t("map_page.form.fields.name_placeholder")}
+                        {...register("name")}
+                    />
+                    {errors.name && <p className="text-red-700">{t(errors.name.message!)}</p>}
+                </div>
+
+                {/* Submit */}
+                <Button type="submit" className="w-full">
+                    {t("map_page.form.submit")}
+                </Button>
+            </form>
+        </>
     );
 };
 

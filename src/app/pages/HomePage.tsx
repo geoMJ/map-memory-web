@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Faq } from "@/features/faq/Faq";
-import { Compass, MapPin, Upload } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
 import FeatureCard from "@/components/shared/FeatureCard";
 import TwoColsWithImg from "@/components/shared/TwoColsWithImg";
+import { ArrowDown, Compass, MapPin, Upload } from "lucide-react";
 
 const HomePage = () => {
     const { t } = useTranslation();
@@ -26,20 +26,20 @@ const HomePage = () => {
     return (
         <>
             {/* Hero section */}
-            <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+            <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48">
                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-center text-center">
                     {/* Main hgroup */}
                     <div className="space-y-6">
-                        <hgroup className="space-y-6">
-                            <h1 className="mx-auto max-w-[800px] text-balance text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                        <hgroup className="mx-auto max-w-[80dvw] lg:max-w-xl space-y-6">
+                            <h1 className="text-balance text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl">
                                 {t("home.hero_section.heading")}
                             </h1>
-                            <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                            <p className="text-gray-400/75 md:text-xl dark:text-gray-400">
                                 {t("home.hero_section.description")}
                             </p>
                         </hgroup>
                         {/* CTA */}
-                        <div className="flex gap-4 justify-center">
+                        <div className="flex gap-4 justify-center [&>a]:w-32">
                             <Button asChild>
                                 <NavLink to="/map">
                                     {t("home.hero_section.explore_map_CTA")}
@@ -59,16 +59,25 @@ const HomePage = () => {
                             width="600"
                         /> */}
                 </div>
+                <div className="absolute left-1/2 bottom-12 -translate-x-1/2 text-foreground">
+                    <ArrowDown size={32} className="animate-bounce" />
+                </div>
             </section>
 
             {/* Features section */}
-            <section id="features" className="w-full py-12 md:py-24 lg:py-32 ">
+            <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/80">
                 <div className="container">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
                         {t("navigation.features")}
                     </h2>
                     <div className="">
-                        {features.map((feature, index) => <TwoColsWithImg key={index+1} {...feature} inverted={index%2 !== 0} />)}
+                        {features.map((feature, index) => (
+                            <TwoColsWithImg
+                                key={index + 1}
+                                {...feature}
+                                inverted={index % 2 !== 0}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -99,7 +108,7 @@ const HomePage = () => {
             </section>
 
             {/* FAQ Section */}
-            <section id="faq" className="w-full py-12 md:py-24 lg:py-32">
+            <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-primary">
                 <div className="container">
                     {" "}
                     {/*TODO maybe remove this wrapper*/}

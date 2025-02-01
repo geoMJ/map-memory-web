@@ -51,6 +51,9 @@ export default {
                     foreground: "hsl(var(--card-foreground))",
                 },
             },
+            backgroundImage: {
+                "gradient-primary": `radial-gradient(circle closest-side at center, hsla(var(--primary) / 0.15) 0%, rgba(0,0,0,0) 100%)`,
+            },
             keyframes: {
                 "accordion-down": {
                     from: {

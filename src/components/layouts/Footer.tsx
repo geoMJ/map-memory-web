@@ -1,25 +1,28 @@
-import { NavLink } from "react-router";
+import GitHubLogo from "@/assets/icons/github-mark.svg?react";
+import { Heart } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
 
 const Footer = () => {
+    const { t } = useTranslation();
+    const footerTranslation = t("footer", { returnObjects: true }) as {
+        made_with: string;
+        love: string;
+        and_a_keyboard: string;
+        graphics_from: string;
+        and: string;
+    };
+
     return (
-        <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-                © 2024 MapMemory. All rights reserved.
+        <footer className="flex flex-col w-full gap-10 p-10 border-t bg-card text-sm text-center text-card-foreground [&>*]:justify-center">
+            <p>{footerTranslation.made_with} {<Heart size={16} className="inline text-pink-700 fill-pink-700" aria-label={footerTranslation.love} />} {footerTranslation.and_a_keyboard}
             </p>
-            <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-                <NavLink
-                    className="text-xs hover:underline underline-offset-4"
-                    to="#"
-                >
-                    Terms of Service
-                </NavLink>
-                <NavLink
-                    className="text-xs hover:underline underline-offset-4"
-                    to="#"
-                >
-                    Privacy
-                </NavLink>
-            </nav>
+            <div className="flex gap-2">
+                <GitHubLogo className="w-6 h-6 fill-card-foreground" />
+            </div>
+            <aside className="[&_a]:text-indigo-500 [&_a:hover]:text-indigo-200 [&_a]:transition-colors">
+                <p className="">© 2024 MapMemory. {footerTranslation.graphics_from} <Link to="https://www.freepik.com/">Freepik</Link> {footerTranslation.and} <Link to="https://lottiefiles.com/">LottieFiles</Link></p>
+            </aside>
         </footer>
     );
 };

@@ -22,7 +22,7 @@ const TwoColsWithImg = ({ title, description, imgSrc, imgAlt, inverted, lottie }
                 <h2 className="text-2xl font-bold sm:text-4xl">{t(title)}</h2>
                 <p>{t(description)}</p>
             </hgroup>
-            <div className="w-80 aspect-square">
+            <div className="w-80 aspect-square content-center">
                 {lottie ? (
                     <DotLottieReact
                         src={imgSrc}
@@ -32,7 +32,7 @@ const TwoColsWithImg = ({ title, description, imgSrc, imgAlt, inverted, lottie }
                         layout={{ fit: "cover", align: [0.5, 0.5] }}
                     />
                 ) : (
-                    <img src={imgSrc} alt={t(imgAlt)} />
+                    <img src={imgSrc} alt={t(imgAlt)} width={250} height={250} className="mx-auto" />
                 )}
             </div>
         </div>

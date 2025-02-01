@@ -7,6 +7,7 @@ import {
     SheetTitle,
 } from "@/components/ui/sheet";
 import Interactive3DMap from "@/features/map/components/InteractiveMap";
+import ConfirmDialog from "@/features/map/components/memoryForm/ConfirmDialog";
 import MemoryForm from "@/features/map/components/memoryForm/MemoryForm";
 import { Home } from "lucide-react";
 import { useState } from "react";
@@ -17,8 +18,10 @@ const MapPage = () => {
     const { t } = useTranslation();
 
     const [userAddingPoint, setUserAddingPoint] = useState(false);
-    const [formOpened, setFormOpened] = useState(false);
     const [addedPoint, setAddedPoint] = useState<string | null>(null);
+    const [formOpened, setFormOpened] = useState(false);
+    const [confirmDialogOpened, setConfirmDialogOpened] = useState(false);
+
 
     const toggleInteration = () => setUserAddingPoint((prev: boolean) => !prev);
     const handlePointAdded = (wktPoint: string) => {
@@ -29,6 +32,7 @@ const MapPage = () => {
     const onFormSubmitted = () => {
         setUserAddingPoint(false);
         setFormOpened(false);
+        setConfirmDialogOpened(true)
     }
 
     return (
@@ -42,7 +46,7 @@ const MapPage = () => {
             {/* Button for toggling user interaction */}
             <Button
                 onClick={toggleInteration}
-                className={`absolute top-4 left-4 z-10 ${userAddingPoint ? "bg-accent" : ""}`}
+                className={`absolute top-4 left-4 z-10 ${userAddingPoint ? "bg-accent text-accent-foreground" : ""}`}
             >
                 {t(
                     userAddingPoint
@@ -54,8 +58,8 @@ const MapPage = () => {
             {/* Side menu with form to submit a memory */}
             <Sheet open={formOpened} onOpenChange={setFormOpened}>
                 <SheetContent>
-                    <SheetHeader>
-                        <SheetTitle className="text-l lg:text-2xl font-bold mb-6">
+                    <SheetHeader className="text-left lg:max-w-[80%] mb-6">
+                        <SheetTitle className="text-lg lg:text-2xl font-bold">
                             {t("map_page.form.main_title")}
                         </SheetTitle>
                         <SheetDescription>{t("map_page.form.main_description")}</SheetDescription>
@@ -68,6 +72,12 @@ const MapPage = () => {
                     )}
                 </SheetContent>
             </Sheet>
+
+            {/* Dialog to confirm the form has been sent */}
+            <ConfirmDialog
+                open={confirmDialogOpened}
+                handleConfirm={() => setConfirmDialogOpened(false)}
+            />
 
             {/* Back to home page */}
             <div className="absolute flex gap-2 items-center right-4 bottom-4 text-xl text-gray-500 hover:text-gray-200 transition-colors">

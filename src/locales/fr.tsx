@@ -1,12 +1,21 @@
 //import type { translation } from "./translation.type"
 
-const fr = {
+import { translation } from "./translation.type";
+
+const fr: translation = {
     navigation: {
         features: "Fonctionnalités",
         how_it_works: "Comment ça marche",
         faq: "FAQ",
         faq_verbose: "Questions fréquentes",
-        map: "Carte intéractive",
+        map: "Carte",
+    },
+    footer: {
+        made_with: "Codé avec",
+        love: "amour",
+        and_a_keyboard: "et un clavier",
+        graphics_from: "Illustrations de",
+        and: "et"
     },
     home: {
         hero_section: {
@@ -20,21 +29,28 @@ const fr = {
             {
                 title: "Le monde en trois dimensions",
                 description: "Un globe interactif avec des épingles aux multiples couleurs pour plus de fun !",
-                imgSrc: "https://lottie.host/c8582010-679b-454e-a98e-6cfb1d7f8a02/wKBogMlUV8.lottie",
+                imgSrc: "https://lottie.host/9d154133-add7-4fd3-b7ad-5741d4b97c13/5qRzRexdQS.lottie",
                 imgAlt: "animation de globe terrestre avec épingles",
                 lottie: true
             },
             {
                 title: "Filtre temporel",
                 description: "Choisissez une époque qui vous intéresse et affichez les photos correspondantes, ou visionnez les toutes les photos en même temps !",
+                imgSrc: "/assets/images/timemachine.webp",
+                imgAlt: "illustration de machine à remonter dans le temps"
             },
             {
                 title: "Dites-nous en plus",
                 description: "Décrivez votre photo et partagez avec les autres des faits qui vous semblent intéressants ou amusants.",
+                imgSrc: "https://lottie.host/90f75128-bb65-40e9-bd34-4927373b6928/riQE3c3ngt.lottie",
+                imgAlt: "animation de crayon",
+                lottie: true
             },
             {
                 title: "Votre histoire visible par tous, tout de suite",
                 description: "Pas besoin de payer ou de remplir des formulaires qui n'en finissent pas. Vous pouvez vous amuser directement !",
+                imgSrc: "/assets/images/pictures.webp",
+                imgAlt: "illustration vectorielle de photos"
             },
         ],
 
@@ -123,6 +139,11 @@ const fr = {
                 },
             },
             submit: "Envoyer !",
+            confirm_dialog: {
+                thanks: "Merci !",
+                wainting_for_review: "Votre contribution va être vérifiée et si tout est bon, elle sera publiée dans les plus brefs délais.",
+                ok: "D'accord !"
+            }
         },
     },
 };
