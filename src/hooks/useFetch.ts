@@ -1,3 +1,3 @@
-const useFetch = (endpoint:string) => {
+// const useFetch = (endpoint:string) => {
     
-}
+// }
