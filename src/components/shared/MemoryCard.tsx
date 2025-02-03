@@ -4,23 +4,24 @@ import { useTranslation } from "react-i18next";
 export interface MemoryCardProps {
     title: string;
     description: string;
+    photo: string;
     year: string;
     month: string | null;
     added_by: string;
 }
 
-const MemoryCard = ({ title, description, year, month, added_by }: MemoryCardProps) => {
+const MemoryCard = ({ title, description, photo, year, month, added_by }: MemoryCardProps) => {
     const { t } = useTranslation();
     const months = t("map_page.form.fields.all_months", {
         returnObjects: true,
     }) as string[];
 
     return (
-        <div className="bg-gray-50 w-64 rounded-2xl shadow-md mb-8">
+        <div className="bg-card w-64 rounded-2xl shadow-md mb-8 text-card-foreground">
             {/* Header img */}
             <img
-                className="w-full max-h-72 object-cover bg-gray-400 rounded-t-2xl"
-                src=""
+                className="w-full max-h-72 object-cover bg-gray-500 rounded-t-2xl"
+                src={photo}
                 alt=""
             />
             {/* Content */}
@@ -37,7 +38,7 @@ const MemoryCard = ({ title, description, year, month, added_by }: MemoryCardPro
                 </div>
                 <div className="text-sm">
                     <p className="">
-                        Added by <span className="text-blue-800">{added_by}</span>
+                        {t("map_page.memory_card.added_by")} <span className="text-indigo-400">{added_by}</span>
                     </p>
                 </div>
             </div>

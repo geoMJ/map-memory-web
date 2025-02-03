@@ -2,7 +2,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useTranslation } from "react-i18next";
 
 interface TwoColsWithImgProps {
-    title: string; 
+    title: string;
     description: string;
     imgSrc: string;
     imgAlt: string;
@@ -10,11 +10,18 @@ interface TwoColsWithImgProps {
     lottie?: boolean;
 }
 
-const TwoColsWithImg = ({ title, description, imgSrc, imgAlt, inverted, lottie }: TwoColsWithImgProps) => {
+const TwoColsWithImg = ({
+    title,
+    description,
+    imgSrc,
+    imgAlt,
+    inverted,
+    lottie,
+}: TwoColsWithImgProps) => {
     const { t } = useTranslation();
     return (
         <div
-            className={`flex flex-col justify-around items-center mb-6 ${
+            className={`flex flex-col justify-around items-center max-lg:gap-12 mb-6 ${
                 inverted ? "lg:flex-row-reverse" : "lg:flex-row"
             }`}
         >
@@ -22,7 +29,7 @@ const TwoColsWithImg = ({ title, description, imgSrc, imgAlt, inverted, lottie }
                 <h2 className="text-2xl font-bold sm:text-4xl">{t(title)}</h2>
                 <p>{t(description)}</p>
             </hgroup>
-            <div className="w-80 aspect-square content-center">
+            <div className="max-lg:w-56 w-80 aspect-square content-center">
                 {lottie ? (
                     <DotLottieReact
                         src={imgSrc}
@@ -32,7 +39,13 @@ const TwoColsWithImg = ({ title, description, imgSrc, imgAlt, inverted, lottie }
                         layout={{ fit: "cover", align: [0.5, 0.5] }}
                     />
                 ) : (
-                    <img src={imgSrc} alt={t(imgAlt)} width={250} height={250} className="mx-auto" />
+                    <img
+                        src={imgSrc}
+                        alt={t(imgAlt)}
+                        width={250}
+                        height={250}
+                        className="mx-auto"
+                    />
                 )}
             </div>
         </div>

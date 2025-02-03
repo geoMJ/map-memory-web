@@ -43,11 +43,14 @@ export type translation = {
         add_memory_trigger: string;
         add_memory_trigger_stop: string;
         back_home: string;
+        memory_card: {
+            added_by: string;
+        };
         decades_filter: {
             tooltip: string;
             dropdown_title: string;
             time_periods: {
-                prefix: string;
+                prefix: string | null;
                 suffix: string | null;
             };
             all: string;

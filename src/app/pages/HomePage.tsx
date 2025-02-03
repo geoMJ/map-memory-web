@@ -26,10 +26,10 @@ const HomePage = () => {
     return (
         <>
             {/* Hero section */}
-            <section className="relative w-full py-12 md:py-24 lg:py-32 xl:py-48">
+            <section className="relative w-full py-20 max-sm:pb-32 md:py-24 lg:py-32 xl:py-48">
                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-center text-center">
                     {/* Main hgroup */}
-                    <div className="space-y-6">
+                    <div className="space-y-8">
                         <hgroup className="mx-auto max-w-[80dvw] lg:max-w-xl space-y-6">
                             <h1 className="text-balance text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl">
                                 {t("home.hero_section.heading")}
@@ -59,7 +59,7 @@ const HomePage = () => {
                             width="600"
                         /> */}
                 </div>
-                <div className="absolute left-1/2 bottom-12 -translate-x-1/2 text-foreground">
+                <div aria-hidden className="hidden lg:block absolute left-1/2 bottom-12 -translate-x-1/2 text-foreground">
                     <ArrowDown size={32} className="animate-bounce" />
                 </div>
             </section>
@@ -96,7 +96,7 @@ const HomePage = () => {
                                 <FeatureCard
                                     key={index + 1}
                                     icon={
-                                        <StepIcon className="h-12 w-12 self-center text-primary" />
+                                        <StepIcon className="h-12 w-12 text-primary" />
                                     }
                                     title={`${index + 1}. ${step.step}`}
                                     description={step.description}

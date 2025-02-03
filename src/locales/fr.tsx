@@ -21,7 +21,7 @@ const fr: translation = {
         hero_section: {
             heading: "Explorez le monde à travers le temps",
             description:
-                "MapMemory est une plateforme gratuite et sans inscription où tout un chacun peut ajouter une épingle à une carte interactive, ajouter une photo, et une date, et la partager avec le reste du monde !",
+                "MapMemory est une plateforme gratuite et sans inscription qui vous permet d'épingler une photo sur une carte interactive et de la partager avec le reste du monde !",
             explore_map_CTA: "Explorer la carte",
             learn_more_CTA: "En savoir plus",
         },
@@ -90,6 +90,9 @@ const fr: translation = {
         add_memory_trigger: "Ajouter",
         add_memory_trigger_stop: "Annuler",
         back_home: "Retour à l'accueil",
+        memory_card: {
+            added_by: "Ajouté par"
+        },
         decades_filter: {
             tooltip: "Filtrer par période",
             dropdown_title: "Sélectionnez des périodes",

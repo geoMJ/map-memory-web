@@ -12,7 +12,7 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
     return (
         <Card>
             <CardHeader>
-                {icon}
+                <div className="self-center mb-4">{icon}</div>
                 <CardTitle>{title}</CardTitle>
             </CardHeader>
             <CardContent>
