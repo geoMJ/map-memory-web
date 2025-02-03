@@ -19,8 +19,6 @@ interface AddMemoryInteractionProps {
 const AddMemoryInteraction = ({ onPointAdded }: AddMemoryInteractionProps) => {
     const { viewer } = useCesium();
 
-    viewer!.scene.globe.atmosphereLightIntensity = -5;
-
     const [userPoint, setUserPoint] = useState<Cartesian3 | null>(null);
 
     // Handler that gets the click position and adds an Entity to the map

@@ -30,6 +30,7 @@
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.54.2",
     "react-router": "^7.1.4",
     "react-router-hash-link": "^2.4.3",
@@ -61,5 +62,10 @@
     "vite": "^6.0.11",
     "vite-plugin-cesium": "^1.2.23"
   },
-  "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
+  "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c",
+  "pnpm": {
+    "overrides": {
+      "sourcemap-codec": "npm:@jridgewell/sourcemap-codec"
+    }
+  }
 }

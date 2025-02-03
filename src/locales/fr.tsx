@@ -18,6 +18,8 @@ const fr: translation = {
         and: "et"
     },
     home: {
+        title: "Accueil",
+        description: "La plateforme de partage de souvenirs sur un globe terrestre interactif !",
         hero_section: {
             heading: "Explorez le monde à travers le temps",
             description:
@@ -87,6 +89,8 @@ const fr: translation = {
         ],
     },
     map_page: {
+        title: "Carte",
+        description: "Interagissez avec le globe pour découvrir les photos des autres et ajouter la votre.",
         add_memory_trigger: "Ajouter",
         add_memory_trigger_stop: "Annuler",
         back_home: "Retour à l'accueil",

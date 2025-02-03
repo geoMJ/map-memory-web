@@ -1,3 +1,4 @@
+import Head from "@/components/seo/Head";
 import { Button } from "@/components/ui/button";
 import {
     Sheet,
@@ -37,6 +38,7 @@ const MapPage = () => {
 
     return (
         <div className="h-screen w-screen relative overflow-hidden">
+            <Head title={t("map_page.title")} description={t("map_page.description")} />
             {/* The interesting part : Cesium map */}
             <Interactive3DMap
                 userAddingPoint={userAddingPoint}

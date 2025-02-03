@@ -5,6 +5,7 @@ import { NavLink } from "react-router";
 import FeatureCard from "@/components/shared/FeatureCard";
 import TwoColsWithImg from "@/components/shared/TwoColsWithImg";
 import { ArrowDown, Compass, MapPin, Upload } from "lucide-react";
+import Head from "@/components/seo/Head";
 
 const HomePage = () => {
     const { t } = useTranslation();
@@ -25,6 +26,7 @@ const HomePage = () => {
 
     return (
         <>
+        <Head title={t("home.title")} description={t("home.description")} />
             {/* Hero section */}
             <section className="relative w-full py-20 max-sm:pb-32 md:py-24 lg:py-32 xl:py-48">
                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-center text-center">

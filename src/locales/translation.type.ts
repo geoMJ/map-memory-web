@@ -16,6 +16,8 @@ export type translation = {
         and: string;
     };
     home: {
+        title: string;
+        description: string;
         hero_section: {
             heading: string;
             description: string;
@@ -40,6 +42,8 @@ export type translation = {
         }[];
     };
     map_page: {
+        title: string;
+        description: string;
         add_memory_trigger: string;
         add_memory_trigger_stop: string;
         back_home: string;

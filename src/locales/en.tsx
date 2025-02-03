@@ -16,6 +16,8 @@ const en: translation = {
         and: "and",
     },
     home: {
+        title: "Home",
+        description: "A cool platform to share your pictures with the world and see them on an interactive globe!",
         hero_section: {
             heading: "Explore the World Through Time",
             description:
@@ -84,6 +86,8 @@ const en: translation = {
         ],
     },
     map_page: {
+        title: "Carte",
+        "description": "Interact with the map to see other people's pictures and add your own.",
         add_memory_trigger: "Add",
         add_memory_trigger_stop: "Cancel",
         back_home: "Back to Home",
