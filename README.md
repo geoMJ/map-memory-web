@@ -1,4 +1,4 @@
-# MapMemory — Web App
+# MapMemory - Web App
 
 Welcome to **MapMemory's Frontend Repository!**  
 
