@@ -1,50 +1,32 @@
-# React + TypeScript + Vite
+# MapMemory — Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **MapMemory's Frontend Repository!**  
 
-Currently, two official plugins are available:
+What started as a simple college assignment with a basic Leaflet map turned into a project I'm genuinely proud of. Users can explore a **3D globe**, discover "memories" (pictures shared by others), and post their own for everyone to see.  
+The cool thing is that you can filter the memories by decade, and see what the world looked like in different eras, like a time machine.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I also included a custom geocoder, which allows you to easely find places on the map.
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- ⚡ **React + Vite + TypeScript** for good UX (imo) in frontend development  
+- 🌐 **Resium / Cesium** for an immersive 3D globe experience  
+- 📌 **Nominatim** for geocoding  
+- 🌏 **i18next** for multilingual support  
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🤝 Contributions Welcome!  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Whether you're a **designer, React developer, GIS enthusiast, student**, or just someone curious or creative, — your help is welcome!  
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Ideas for contributions include:  
+- 🌟 **UI/UX improvements**  
+- 🔧 **Code optimizations**  
+- 🗺️ **Map features**  
+- 🌍 **Translations**  
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+No contribution is too small so don't hesitate to hop in and help make MapMemory better!
+
+Thanks for checking out my project!
