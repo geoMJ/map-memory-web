@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Faq } from "@/features/faq/Faq";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router";
+import { NavLink, Link } from "react-router";
 import FeatureCard from "@/components/shared/FeatureCard";
 import TwoColsWithImg from "@/components/shared/TwoColsWithImg";
 import { ArrowDown, Compass, ExternalLink, MapPin, Upload } from "lucide-react";
@@ -47,10 +47,10 @@ const HomePage = () => {
                                 </NavLink>
                             </Button>
                             <Button variant="outline" asChild title="Github">
-                                <NavLink to="#how-it-works">
+                                <Link to="https://github.com/geoMJ/map-memory-web" target="_blank">
                                     <ExternalLink />
                                     {t("home.hero_section.learn_more_CTA")}
-                                </NavLink>
+                                </Link>
                             </Button>
                         </div>
                     </div>
