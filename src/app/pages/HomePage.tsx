@@ -29,13 +29,13 @@ const HomePage = () => {
         <Head title={t("home.title")} description={t("home.description")} />
             {/* Hero section */}
             <section className="relative container py-20 max-sm:pb-32 md:py-24 lg:py-32 xl:py-48">
-                <div className="flex flex-col gap-6 lg:gap-12 justify-center items-center text-center">
+                <div className="flex flex-col gap-8 justify-center items-center text-center">
                     {/* Main hgroup */}
                         <hgroup className="mx-auto lg:max-w-xl space-y-6">
                             <h1 className="text-balance text-3xl md:text-5xl xl:text-6xl font-bold tracking-tighter">
                                 {t("home.hero_section.heading")}
                             </h1>
-                            <p className="py-2 lg:py-4 text-foreground/60 md:text-xl">
+                            <p className="text-gray-400/80 md:text-xl">
                                 {t("home.hero_section.description")}
                             </p>
                         </hgroup>
