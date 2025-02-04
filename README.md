@@ -13,10 +13,10 @@ I also included a custom geocoder, which allows you to easely find places on the
 
 ## </> Tech Stack  
 
-- ⚡ **React + Vite + TypeScript** for good UX (imo) in frontend development  
-- 🌐 **Resium / Cesium** for an immersive 3D globe experience  
-- 📌 **Nominatim** for geocoding  
-- 🌏 **i18next** for multilingual support  
+- ⚡ **[React](https://github.com/facebook/react) + [Vite](https://github.com/vitejs/vite) + [TypeScript](https://github.com/microsoft/TypeScript)** for good UX (imo) in frontend development  
+- 🌐 **[Resium](https://github.com/reearth/resium) / [Cesium](https://github.com/CesiumGS/cesium)** for an immersive 3D globe experience  
+- 📌 **[Nominatim](https://github.com/osm-search/Nominatim)** for geocoding  
+- 🌏 **[react-i18next](https://github.com/i18next/react-i18next)** for multilingual support (currently English and French)
 
 ---
 
