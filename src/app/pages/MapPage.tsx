@@ -23,6 +23,7 @@ const MapPage = () => {
     const [formOpened, setFormOpened] = useState(false);
     const [confirmDialogOpened, setConfirmDialogOpened] = useState(false);
 
+    //const showHelp = () => {}
 
     const toggleInteration = () => setUserAddingPoint((prev: boolean) => !prev);
     const handlePointAdded = (wktPoint: string) => {
@@ -33,22 +34,26 @@ const MapPage = () => {
     const onFormSubmitted = () => {
         setUserAddingPoint(false);
         setFormOpened(false);
-        setConfirmDialogOpened(true)
-    }
+        setConfirmDialogOpened(true);
+    };
 
     return (
         <div className="h-screen w-screen relative overflow-hidden">
             <Head title={t("map_page.title")} description={t("map_page.description")} />
             {/* The interesting part : Cesium map */}
-            <Interactive3DMap
-                userAddingPoint={userAddingPoint}
-                onUserAddedPoint={handlePointAdded}
-            />
+            <div className={userAddingPoint && !formOpened ? "cursor-[url('/assets/icons/lucide-plus.png'),auto]" : ""}>
+                <Interactive3DMap
+                    userAddingPoint={userAddingPoint}
+                    onUserAddedPoint={handlePointAdded}
+                />
+            </div>
 
             {/* Button for toggling user interaction */}
             <Button
                 onClick={toggleInteration}
-                className={`absolute top-4 left-4 z-10 ${userAddingPoint ? "bg-accent text-accent-foreground" : ""}`}
+                className={`absolute top-4 left-4 z-10 ${
+                    userAddingPoint ? "bg-accent text-accent-foreground" : ""
+                }`}
             >
                 {t(
                     userAddingPoint
@@ -66,12 +71,7 @@ const MapPage = () => {
                         </SheetTitle>
                         <SheetDescription>{t("map_page.form.main_description")}</SheetDescription>
                     </SheetHeader>
-                    {addedPoint && (
-                        <MemoryForm
-                            onSubmitted={onFormSubmitted}
-                            point={addedPoint}
-                        />
-                    )}
+                    {addedPoint && <MemoryForm onSubmitted={onFormSubmitted} point={addedPoint} />}
                 </SheetContent>
             </Sheet>
 

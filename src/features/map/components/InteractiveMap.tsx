@@ -8,6 +8,7 @@ import DecadeFilter from "@/components/shared/DecadeFilter";
 import { getRandomHexColor } from "../utils/randomColor";
 import MemoryCard, { MemoryCardProps } from "@/components/shared/MemoryCard";
 import { X } from "lucide-react";
+import InfoMessage from "@/components/ui/InfoMessage";
 
 const mapTiles = new ImageryLayer(new OpenStreetMapImageryProvider({}));
 // TODO maybe move this kind of stuff to a dedicaced util file
@@ -40,6 +41,7 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
     const [filteredMemories, setFilteredMemories] = useState<GeoJsonFeatureCollection | null>(null);
     const [chosenTimePeriods, setChosenTimePeriods] = useState<number[]>(decades);
     const [mouseOnMemory, setMouseOnMemory] = useState(false);
+    const [helpClosed, setHelpClosed] = useState(false);
 
     // Memory Card related state
     const [cardProperties, setCardProperties] = useState<MemoryCardProps | null>(null);
@@ -107,7 +109,7 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
     // Finally, the cards !
     const showMemoryCard = (target: EventTarget) => {
         const memory = target.id.properties?.getValue() as MemoryCardProps;
-        console.log("showing")
+        console.log("showing");
         setCardProperties(memory);
     };
 
@@ -128,7 +130,6 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
             fullscreenButton={false}
             className={mouseOnMemory ? "cursor-pointer" : ""}
         >
-
             {/* Existing memories... */}
             {memories && (
                 <GeoJsonDataSource
@@ -145,7 +146,13 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
             {/* Showing what the user added */}
             {cardProperties && (
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 animate-in zoom-in-50 slide-in-from-top-1/2 slide-in-from-left-1/2">
-                    <button className="absolute top-2 right-2 p-2 rounded-full bg-gray-700 text-gray-50 opacity-50 hover:opacity-90 transition-opacity" aria-label="close" onClick={() => setCardProperties(null)}><X size={16} /></button>
+                    <button
+                        className="absolute top-2 right-2 p-2 rounded-full bg-gray-700 text-gray-50 opacity-50 hover:opacity-90 transition-opacity"
+                        aria-label="close"
+                        onClick={() => setCardProperties(null)}
+                    >
+                        <X size={16} />
+                    </button>
                     <MemoryCard {...cardProperties} />
                 </div>
             )}
@@ -164,6 +171,13 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
 
             {/* User adds a new memory */}
             {userAddingPoint ? <AddMemoryInteraction onPointAdded={onUserAddedPoint} /> : null}
+
+            {/* Message to help them know what to do */}
+            <InfoMessage
+                open={userAddingPoint && !helpClosed}
+                onOpenChange={() => setHelpClosed(true)}
+                message="map_page.help_message"
+            />
         </Viewer>
     );
 };

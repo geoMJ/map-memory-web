@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
 import FeatureCard from "@/components/shared/FeatureCard";
 import TwoColsWithImg from "@/components/shared/TwoColsWithImg";
-import { ArrowDown, Compass, MapPin, Upload } from "lucide-react";
+import { ArrowDown, Compass, ExternalLink, MapPin, Upload } from "lucide-react";
 import Head from "@/components/seo/Head";
 
 const HomePage = () => {
@@ -28,39 +28,32 @@ const HomePage = () => {
         <>
         <Head title={t("home.title")} description={t("home.description")} />
             {/* Hero section */}
-            <section className="relative w-full py-20 max-sm:pb-32 md:py-24 lg:py-32 xl:py-48">
-                <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-center text-center">
+            <section className="relative container py-20 max-sm:pb-32 md:py-24 lg:py-32 xl:py-48">
+                <div className="flex flex-col gap-6 lg:gap-12 justify-center items-center text-center">
                     {/* Main hgroup */}
-                    <div className="space-y-8">
-                        <hgroup className="mx-auto max-w-[80dvw] lg:max-w-xl space-y-6">
-                            <h1 className="text-balance text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl">
+                        <hgroup className="mx-auto lg:max-w-xl space-y-6">
+                            <h1 className="text-balance text-3xl md:text-5xl xl:text-6xl font-bold tracking-tighter">
                                 {t("home.hero_section.heading")}
                             </h1>
-                            <p className="text-gray-400/75 md:text-xl dark:text-gray-400">
+                            <p className="py-2 lg:py-4 text-foreground/60 md:text-xl">
                                 {t("home.hero_section.description")}
                             </p>
                         </hgroup>
                         {/* CTA */}
-                        <div className="flex gap-4 justify-center [&>a]:w-32">
+                        <div className="flex flex-col md:flex-row gap-4 justify-center w-full [&>a]:w-full [&_a]:md:w-32">
                             <Button asChild>
                                 <NavLink to="/map">
                                     {t("home.hero_section.explore_map_CTA")}
                                 </NavLink>
                             </Button>
-                            <Button variant="outline" asChild>
+                            <Button variant="outline" asChild title="Github">
                                 <NavLink to="#how-it-works">
+                                    <ExternalLink />
                                     {t("home.hero_section.learn_more_CTA")}
                                 </NavLink>
                             </Button>
                         </div>
                     </div>
-                    {/* <img
-                            alt="Hero"
-                            className="aspect-video mx-auto rounded-xl object-cover object-center lg:order-last"
-                            src={placeholderImg}
-                            width="600"
-                        /> */}
-                </div>
                 <div aria-hidden className="hidden lg:block absolute left-1/2 bottom-12 -translate-x-1/2 text-foreground">
                     <ArrowDown size={32} className="animate-bounce" />
                 </div>

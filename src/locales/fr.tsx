@@ -86,6 +86,10 @@ const fr: translation = {
                 question: "Comment trier les photos par année ?",
                 answer: "Sur la page de la carte, vous trouverez une option de filtre qui vous permet de trier les épingles par année. Vous pouvez sélectionner une année une plage d'années et voir ce que les utilisateurs ont ajouté.",
             },
+            {
+                question: "Mes données personnelles sont elles-protégées ?",
+                answer: "En plus de ne pas nécessiter d'inscription, ce site ne collecte aucune donnée personnelle (pas de cookies ou autre système de collecte). De plus, seule une copie des photos que vous ajoutez est conservée. Cette copie ne récupère aucune donnée EXIF, et n'expose donc aucune information sur vous."
+            }
         ],
     },
     map_page: {
@@ -107,6 +111,7 @@ const fr: translation = {
             all: "Toutes",
         },
         search_bar_placeholder: "Rechercher un lieu...",
+        help_message: "Cliquez à l'endroit désiré pour ajouter un point.",
         form: {
             main_title: "Ajoutez un souvenir",
             main_description: "Remplissez ce formulaire afin de partager votre photo.",

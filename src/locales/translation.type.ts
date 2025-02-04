@@ -60,6 +60,7 @@ export type translation = {
             all: string;
         };
         search_bar_placeholder: string;
+        help_message:string;
         form: {
             main_title: string;
             main_description: string;

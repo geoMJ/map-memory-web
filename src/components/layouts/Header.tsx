@@ -1,7 +1,7 @@
 import { MenuIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import ScrollToHashElement from "../shared/ScrolToHashElementlElement";
 import ThemeSwitch from "../ui/ThemeSwitch";
@@ -47,7 +47,7 @@ const Header = () => {
                 <NavLink to="/" className="font-bold text-2xl">
                     MapMemory
                 </NavLink>
-                <div className="flex items-center">
+                <div className="flex flex-row-reverse md:flex-row items-center">
                 <div className="md:hidden">
                     <Sheet>
                         <SheetTrigger asChild>
@@ -56,6 +56,7 @@ const Header = () => {
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="top" className="text-center pt-12 rounded-b">
+                            <SheetTitle className="sr-only">Menu</SheetTitle>
                             <Navbar />
                         </SheetContent>
                     </Sheet>

@@ -83,6 +83,10 @@ const en: translation = {
                 question: "How do I sort photos by year?",
                 answer: "On the map page, you'll find a filter option that allows you to sort pins by year. You can select a single year or a range of years to see user contributions.",
             },
+            {
+                question: "Is my personal data safe ?",
+                answer: "In addition to not requiring registration, this website does not collect any personal data (via systems such as cookies). Additionally, only a copy of the pictures you add is kept. This copy does not retrieve any EXIF data, and therefore does not expose any information about you."
+            }
         ],
     },
     map_page: {
@@ -104,6 +108,7 @@ const en: translation = {
             all: "All",
         },
         search_bar_placeholder: "Search for a location...",
+        help_message: "Click anywhere you want to add a point.",
         form: {
             main_title: "Add a Memory",
             main_description: "Fill out this form to share your photo.",
