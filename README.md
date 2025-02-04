@@ -8,9 +8,10 @@ What started as a simple college assignment with a basic Leaflet map turned into
 The cool thing is that you can filter the memories by decade, and see what the world looked like in different eras, like a time machine.
 
 I also included a custom geocoder, which allows you to easely find places on the map.
+
 ---
 
-## 🚀 Tech Stack  
+## </> Tech Stack  
 
 - ⚡ **React + Vite + TypeScript** for good UX (imo) in frontend development  
 - 🌐 **Resium / Cesium** for an immersive 3D globe experience  
