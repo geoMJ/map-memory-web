@@ -37,7 +37,7 @@ const MemoryForm = ({ point, onSubmitted }: MemoryFormProps) => {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            //onSubmitted();
+            onSubmitted();
             
         } catch (error) {
             onSubmitted(error);
