@@ -70,7 +70,7 @@ const DecadeFilter = ({
                                 checked={chosenDecades.includes(decade)}
                                 onCheckedChange={() => handleCheck(decade)}
                             >
-                                {decadesFilterTranslation.time_periods.prefix}{decade}{decadesFilterTranslation.time_periods.suffix}
+                                <span>{decadesFilterTranslation.time_periods.prefix}{decade}{decadesFilterTranslation.time_periods.suffix}</span>
                             </DropdownMenuCheckboxItem>
                         ))}
                     </DropdownMenuContent>

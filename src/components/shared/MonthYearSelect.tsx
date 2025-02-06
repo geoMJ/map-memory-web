@@ -30,7 +30,7 @@ const YearSelect = ({ ...props }: React.ComponentProps<typeof Select>) => {
             <SelectContent>
                 {years.map((year) => (
                     <SelectItem key={year} value={year.toString()}>
-                        {year}
+                        <span>{year}</span>
                     </SelectItem>
                 ))}
             </SelectContent>
@@ -55,7 +55,7 @@ const MonthSelect = ({ ...props }: React.ComponentProps<typeof Select>) => {
             <SelectContent>
                 {months.map((month, index) => (
                     <SelectItem key={index} value={(index+1).toString()}>
-                        {month}
+                        <span>{month}</span>
                     </SelectItem>
                 ))}
             </SelectContent>
