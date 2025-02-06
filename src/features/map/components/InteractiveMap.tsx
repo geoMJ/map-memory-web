@@ -109,7 +109,6 @@ const Interactive3DMap = ({ userAddingPoint, onUserAddedPoint }: Interactive3DMa
     // Finally, the cards !
     const showMemoryCard = (target: EventTarget) => {
         const memory = target.id.properties?.getValue() as MemoryCardProps;
-        console.log("showing");
         setCardProperties(memory);
     };
 

@@ -21,7 +21,10 @@ const MapPage = () => {
     const [userAddingPoint, setUserAddingPoint] = useState(false);
     const [addedPoint, setAddedPoint] = useState<string | null>(null);
     const [formOpened, setFormOpened] = useState(false);
-    const [confirmDialogOpened, setConfirmDialogOpened] = useState(false);
+    const [confirmDialog, setConfirmDialog] = useState<{ opened: boolean; error: unknown | null }>({
+        opened: false,
+        error: null,
+    });
 
     //const showHelp = () => {}
 
@@ -31,17 +34,23 @@ const MapPage = () => {
         setAddedPoint(wktPoint);
     };
 
-    const onFormSubmitted = () => {
+    const onFormSubmitted = (error?: unknown) => {
         setUserAddingPoint(false);
         setFormOpened(false);
-        setConfirmDialogOpened(true);
+        setConfirmDialog({ opened: true, error: error ? error : null });
     };
 
     return (
         <div className="h-screen w-screen relative overflow-hidden">
             <Head title={t("map_page.title")} description={t("map_page.description")} />
             {/* The interesting part : Cesium map */}
-            <div className={userAddingPoint && !formOpened ? "cursor-[url('/assets/icons/lucide-plus.png'),auto]" : ""}>
+            <div
+                className={
+                    userAddingPoint && !formOpened
+                        ? "cursor-[url('/assets/icons/lucide-plus.png'),auto]"
+                        : ""
+                }
+            >
                 <Interactive3DMap
                     userAddingPoint={userAddingPoint}
                     onUserAddedPoint={handlePointAdded}
@@ -64,22 +73,29 @@ const MapPage = () => {
 
             {/* Side menu with form to submit a memory */}
             <Sheet open={formOpened} onOpenChange={setFormOpened}>
-                <SheetContent>
+                <SheetContent translate="no">
                     <SheetHeader className="text-left lg:max-w-[80%] mb-6">
                         <SheetTitle className="text-lg lg:text-2xl font-bold">
                             {t("map_page.form.main_title")}
                         </SheetTitle>
                         <SheetDescription>{t("map_page.form.main_description")}</SheetDescription>
                     </SheetHeader>
-                    {addedPoint && <MemoryForm onSubmitted={onFormSubmitted} point={addedPoint} />}
+                    {addedPoint && (
+                        <MemoryForm
+                            onSubmitted={onFormSubmitted}
+                            point={addedPoint}
+                        />
+                    )}
                 </SheetContent>
             </Sheet>
 
             {/* Dialog to confirm the form has been sent */}
-            <ConfirmDialog
-                open={confirmDialogOpened}
-                handleConfirm={() => setConfirmDialogOpened(false)}
-            />
+            {confirmDialog.opened && (
+                <ConfirmDialog
+                    handleConfirm={() => setConfirmDialog({ opened: false, error: null })}
+                    error={confirmDialog.error}
+                />
+            )}
 
             {/* Back to home page */}
             <div className="absolute flex gap-2 items-center right-4 bottom-4 text-xl text-gray-500 hover:text-gray-200 transition-colors">

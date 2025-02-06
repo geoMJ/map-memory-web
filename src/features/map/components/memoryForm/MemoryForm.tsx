@@ -11,7 +11,7 @@ import { apiClient } from "@/lib/apiClient";
 
 interface MemoryFormProps {
     point: string;
-    onSubmitted: () => void;
+    onSubmitted: (error?:unknown) => void;
 }
 
 const MemoryForm = ({ point, onSubmitted }: MemoryFormProps) => {
@@ -29,15 +29,22 @@ const MemoryForm = ({ point, onSubmitted }: MemoryFormProps) => {
         resolver: zodResolver(memoryFormSchema),
     });
 
-    const handleMemorySubmit: SubmitHandler<memoryFormInputs> = (data) => {
+    const handleMemorySubmit: SubmitHandler<memoryFormInputs> = async (data) => {
         const memoryData = { ...data, geom: point, photo: data.photo[0] };
-        apiClient.post("memories/", memoryData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        });
+        try {
+            await apiClient.post("memories/", memoryData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            //onSubmitted();
+            
+        } catch (error) {
+            onSubmitted(error);
+        }
+        
         reset();
-        onSubmitted();
+        
     };
 
     //////////////////////////

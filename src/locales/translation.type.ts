@@ -102,7 +102,9 @@ export type translation = {
             submit: string;
             confirm_dialog: {
                 thanks: string;
+                oops: string;
                 wainting_for_review: string;
+                error_has_occured: string;
                 ok: string;
             };
         };

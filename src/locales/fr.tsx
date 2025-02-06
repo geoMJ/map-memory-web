@@ -153,7 +153,9 @@ const fr: translation = {
             submit: "Envoyer !",
             confirm_dialog: {
                 thanks: "Merci !",
+                oops: "Oups !",
                 wainting_for_review: "Votre contribution va être vérifiée et si tout est bon, elle sera publiée dans les plus brefs délais.",
+                error_has_occured: "Une erreur est survenue lors de l'envoi. Merci de réessayer plus tard.",
                 ok: "D'accord !"
             }
         },

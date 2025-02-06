@@ -22,7 +22,6 @@ const PlaceSearchBar = () => {
         }
 
         if (coords && viewer) {
-            console.log("flying");
             flyToLocation(coords.lon, coords.lat, viewer);
         }
     };

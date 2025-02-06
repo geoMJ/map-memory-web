@@ -17,7 +17,8 @@ const en: translation = {
     },
     home: {
         title: "Home",
-        description: "A cool platform to share your pictures with the world and see them on an interactive globe!",
+        description:
+            "A cool platform to share your pictures with the world and see them on an interactive globe!",
         hero_section: {
             heading: "Explore the World Through Time",
             description:
@@ -85,13 +86,13 @@ const en: translation = {
             },
             {
                 question: "Is my personal data safe ?",
-                answer: "In addition to not requiring registration, this website does not collect any personal data (via systems such as cookies). Additionally, only a copy of the pictures you add is kept. This copy does not retrieve any EXIF data, and therefore does not expose any information about you."
-            }
+                answer: "In addition to not requiring registration, this website does not collect any personal data (via systems such as cookies). Additionally, only a copy of the pictures you add is kept. This copy does not retrieve any EXIF data, and therefore does not expose any information about you.",
+            },
         ],
     },
     map_page: {
         title: "Carte",
-        "description": "Interact with the map to see other people's pictures and add your own.",
+        description: "Interact with the map to see other people's pictures and add your own.",
         add_memory_trigger: "Add",
         add_memory_trigger_stop: "Cancel",
         back_home: "Back to Home",
@@ -150,8 +151,11 @@ const en: translation = {
             submit: "Submit!",
             confirm_dialog: {
                 thanks: "Thank you!",
+                oops: "Oops!",
                 wainting_for_review:
                     "Your contribution will be reviewed and published as soon as possible if everything is okay.",
+                error_has_occured:
+                    "An error has occured while submitting your picture, please try again later.",
                 ok: "Okay!",
             },
         },

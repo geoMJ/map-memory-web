@@ -7,28 +7,37 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { CircleCheck } from "lucide-react";
+import { CircleCheck, CircleX } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const ConfirmDialog = ({
-    open,
-    handleConfirm,
-}: React.ComponentProps<typeof AlertDialog> & { handleConfirm: () => void }) => {
+interface ConfirmDialogProps extends React.ComponentProps<typeof AlertDialog> {
+    handleConfirm: (opened?:unknown) => void;
+    error: unknown | null;
+}
+
+const ConfirmDialog = ({ handleConfirm, error }: ConfirmDialogProps) => {
     const { t } = useTranslation();
     const dialogText = t("map_page.form.confirm_dialog", { returnObjects: true }) as {
         thanks: string;
+        oops: string;
         wainting_for_review: string;
+        error_has_occured: string;
         ok: string;
     };
 
+    const DialogIcon = error ? CircleX : CircleCheck;
+
     return (
-        <AlertDialog open={open}>
+        <AlertDialog open>
             <AlertDialogContent>
                 <AlertDialogHeader className="px-6 py-4 text-center">
-                    <CircleCheck size={52} className="mx-auto text-green-600" />
-                    <AlertDialogTitle>{dialogText.thanks}</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        {dialogText.wainting_for_review}
+                    <DialogIcon
+                        size={52}
+                        className={`mx-auto ${error ? "text-red-600" : "text-green-600"}`}
+                    />
+                    <AlertDialogTitle className="text-center">{error ? dialogText.oops : dialogText.thanks}</AlertDialogTitle>
+                    <AlertDialogDescription className="text-center text-balance">
+                        {error ? dialogText.error_has_occured : dialogText.wainting_for_review}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter className="!justify-center">
