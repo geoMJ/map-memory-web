@@ -37,7 +37,7 @@ const fr: translation = {
             },
             {
                 title: "Filtre temporel",
-                description: "Choisissez une époque qui vous intéresse et affichez les photos correspondantes, ou visionnez les toutes les photos en même temps !",
+                description: "Choisissez une époque qui vous intéresse et affichez les photos correspondantes, ou visionnez toutes les photos en même temps !",
                 imgSrc: "/assets/images/timemachine.webp",
                 imgAlt: "illustration de machine à remonter dans le temps"
             },

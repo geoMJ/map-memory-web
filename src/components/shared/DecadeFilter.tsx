@@ -75,7 +75,7 @@ const DecadeFilter = ({
                         ))}
                     </DropdownMenuContent>
                 </DropdownMenu>
-                <TooltipContent className="bg-gray-100">
+                <TooltipContent>
                     <p>{decadesFilterTranslation.tooltip}</p>
                 </TooltipContent>
             </Tooltip>
